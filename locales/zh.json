@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": "Kent Shen — 工作台",
+    "description": "一個做小工具的工作台——Chrome 外掛、App、遊戲與網站服務，Kent Shen 製作。",
+    "htmlLang": "zh-Hant"
+  },
+  "ui": {
+    "tagline": "// 白天做售前工程師，晚上做點小工具",
+    "modeButton": "模式",
+    "aboutLink": "關於",
+    "nav": {
+      "extensions": "外掛",
+      "apps": "App",
+      "games": "遊戲",
+      "services": "服務"
+    },
+    "hero": {
+      "statement": "這是個**工作台**，不是作品集——因為自己需要而做的小工具，做好就直接上架。",
+      "sub": "目前：兩個 Chrome 外掛已上線。之後的 App、小遊戲、服務會陸續加進下方的紀錄裡。沒有精美 Demo，也沒有 roadmap 簡報，只有真的能用的東西。"
+    },
+    "sections": {
+      "extensions": "01 — Chrome 外掛",
+      "apps": "02 — 手機應用程式",
+      "games": "03 — 小遊戲",
+      "services": "04 — 網站服務"
+    },
+    "statusLabels": {
+      "live": "已上線",
+      "beta": "測試中",
+      "planned": "規劃中"
+    },
+    "linkLabels": {
+      "install": "安裝（載入未封裝）→",
+      "store": "前往 Chrome 線上應用程式店 →",
+      "source": "原始碼",
+      "visit": "前往 →",
+      "download": "下載 →"
+    },
+    "about": {
+      "label": "關於",
+      "body": "白天是趨勢科技（Trend Micro）的售前工程師，駐點高雄，負責 Vision One 的部署與展示。轉職資安之前有五年前端工程經驗（Vue/React）——這個網站就是那段背景在下班後還派得上用場的地方。",
+      "links": {
+        "github": "GitHub",
+        "podcast": "Podcast — 資安解碼",
+        "contact": "聯絡"
+      }
+    },
+    "colophon": "字體使用 Big Shoulders Display 與 IBM Plex Mono。純手工打造，沒有框架。"
+  },
+  "products": [
+    {
+      "id": "hiking-map",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.07",
+      "title": "台灣百岳地圖",
+      "kind": "Chrome 外掛",
+      "desc": "直接從網址座標把台灣**百岳**疊加到 Google 地圖上——不需要 API 計費。每座山都有依海拔調整的圖釘，並直接連到申請入山證的統一入口，規劃路線不用開十五個分頁。",
+      "links": [
+        {
+          "label": "install",
+          "url": "#"
+        },
+        {
+          "label": "source",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": "lyrics-overlay",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.06",
+      "title": "日文歌詞同步翻譯 Lyric Sync",
+      "kind": "Chrome 外掛",
+      "desc": "我上架的第一個外掛。在 YouTube 日文歌曲上顯示可拖曳的浮動歌詞面板——附注音假名、可調整提前量的卡拉 OK 式逐字 highlight，還有同步的繁體中文翻譯。底層用 **kuromoji** 做斷詞，並有自訂修正檔處理讀音抓錯的地方。",
+      "links": [
+        {
+          "label": "store",
+          "url": "https://chromewebstore.google.com/detail/%E6%97%A5%E6%96%87%E6%AD%8C%E8%A9%9E%E5%90%8C%E6%AD%A5%E7%BF%BB%E8%AD%AF-lyric-sync/fgfbcpaaihodhcbncfgdnadiddmpdeem"
+        },
+        {
+          "label": "source",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": "apps-placeholder",
+      "category": "apps",
+      "status": "planned",
+      "date": null,
+      "title": "尚未命名",
+      "kind": "iOS / Android",
+      "desc": "目前還沒有東西上架，這個位置先留給第一支手機 App——之後紀錄會慢慢補上。",
+      "links": []
+    },
+    {
+      "id": "games-placeholder",
+      "category": "games",
+      "status": "planned",
+      "date": null,
+      "title": "尚未命名",
+      "kind": "小遊戲",
+      "desc": "留給一個小而完整的遊戲——不貪多，五分鐘內能玩完的那種。",
+      "links": []
+    },
+    {
+      "id": "services-placeholder",
+      "category": "services",
+      "status": "planned",
+      "date": null,
+      "title": "尚未命名",
+      "kind": "網站服務",
+      "desc": "留給第一個正式架設的網站服務——大概會是某個從單一 HTML 原型長大的東西。",
+      "links": []
+    }
+  ]
+}
