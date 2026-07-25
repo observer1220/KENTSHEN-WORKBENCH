@@ -1,87 +1,19 @@
 <!doctype html>
-<html lang="en" id="htmlRoot">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1"
-    />
-    <title id="pageTitle">Kent Shen — Workbench</title>
-    <meta
-      id="pageDescription"
-      name="description"
-      content="A workbench for small, useful things — Chrome extensions, apps, games, and web services built by Kent Shen."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <title>Kent Shen — Workbench</title>
+    <meta name="description" content="A workbench for small, useful things — Chrome extensions, apps, games, and web services built by Kent Shen." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body hidden>
-    <div class="wrap">
-      <header>
-        <div class="headerbar">
-          <div>
-            <h1 class="brand" id="brandTitle">KENT<br /><span>SHEN</span></h1>
-            <!-- <p class="tagline" id="tagline"></p> -->
-          </div>
-          <div class="headertools">
-            <a class="aboutlink" href="#about" id="aboutLinkLabel">about</a>
-            <!-- <button
-              class="langbtn"
-              id="langToggle"
-              type="button"
-              aria-label="Switch language"
-            >
-              EN / 繁中
-            </button> -->
-            <button
-              class="modebtn"
-              id="modeToggle"
-              type="button"
-              aria-label="Toggle dark mode"
-            ></button>
-          </div>
-        </div>
-        <nav class="catnav" aria-label="Product categories" id="catNav"></nav>
-      </header>
-
-      <section class="hero">
-        <p id="heroStatement"></p>
-        <p class="sub" id="heroSub"></p>
-      </section>
-
-      <section class="log" id="extensions">
-        <div class="sectionlabel" id="labelExtensions"></div>
-        <div class="rail" id="railExtensions"></div>
-      </section>
-
-      <section class="log" id="apps">
-        <div class="sectionlabel" id="labelApps"></div>
-        <div class="rail" id="railApps"></div>
-      </section>
-
-      <section class="log" id="games">
-        <div class="sectionlabel" id="labelGames"></div>
-        <div class="rail" id="railGames"></div>
-      </section>
-
-      <section class="log" id="services">
-        <div class="sectionlabel" id="labelServices"></div>
-        <div class="rail" id="railServices"></div>
-      </section>
-
-      <footer id="about">
-        <div class="about-title" id="aboutLabel">About</div>
-        <p id="aboutBody"></p>
-        <div class="foot-links" id="footLinks"></div>
-        <div class="colophon" id="colophon"></div>
-      </footer>
-    </div>
-
-    <script src="js/main.js"></script>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

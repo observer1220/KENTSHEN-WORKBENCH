@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Kent Shen — Workbench",
+    "description": "A workbench for small, useful things — Chrome extensions, apps, games, and web services built by Kent Shen.",
+    "htmlLang": "en"
+  },
+  "ui": {
+    "aboutLink": "about",
+    "statusLabels": {
+      "live": "Live",
+      "beta": "Beta",
+      "planned": "Planned"
+    },
+    "linkLabels": {
+      "install": "Install unpacked →",
+      "store": "Chrome Web Store →",
+      "source": "Source",
+      "visit": "Visit →",
+      "download": "Download →"
+    },
+    "about": {
+      "label": "About",
+      "links": {
+        "github": "GitHub",
+        "contact": "Contact"
+      }
+    },
+    "colophon": "Set in Big Shoulders Display & IBM Plex Mono. Built by hand, no framework.",
+    "boot": {
+      "lines": [
+        "booting KENT_SHEN_WORKBENCH.SYS...",
+        "mounting modules [extensions] [apps] [games] [services] [skills]... OK",
+        "establishing secure connection... OK",
+        "loading user profile... OK",
+        "welcome back, operator."
+      ],
+      "skip": "SKIP [ENTER]"
+    }
+  },
+  "products": [
+    {
+      "id": "lyrics-overlay",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.06",
+      "title": "JPOP-LYRIC-SYNC-CHROME-EXTENSION",
+      "kind": "Chrome Extension",
+      "desc": "My first extension to ship. A floating, draggable lyrics panel for Japanese songs on YouTube — furigana readings, karaoke-style word highlighting with adjustable lead time, and synced Traditional Chinese translation. Built with **kuromoji** tokenization. Live on the Chrome Web Store.",
+      "links": [
+        {
+          "label": "store",
+          "url": "https://chromewebstore.google.com/detail/%E6%97%A5%E6%96%87%E6%AD%8C%E8%A9%9E%E5%90%8C%E6%AD%A5%E7%BF%BB%E8%AD%AF-lyric-sync/fgfbcpaaihodhcbncfgdnadiddmpdeem"
+        },
+        {
+          "label": "source",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": "peaks-map-site",
+      "category": "services",
+      "status": "live",
+      "date": "2026.04",
+      "title": "PEAKS-OF-TAIWAN-WEB",
+      "kind": "Website",
+      "desc": "The standalone version of the project above — a full **Leaflet** map site with satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://taiwan-baiyue.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "tw-stock-report",
+      "category": "services",
+      "status": "live",
+      "date": "2026.07",
+      "title": "TW-STOCK-REPORT",
+      "kind": "Website",
+      "desc": "One-click fetch of the latest **TW and US** stock fundamentals — P/E, P/B, dividend yield, gross margin, pre-tax margin, YoY revenue growth — auto-scored into an investment score and health rating, with CSV/JSON export.",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://tw-stock-report.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "job-analyzer",
+      "category": "services",
+      "status": "live",
+      "date": "2026.07",
+      "title": "JOB-ANALYZER",
+      "kind": "Website",
+      "desc": "Paste in a job description — or a CakeResume link for automatic scraping — and get a **six-dimension radar chart** quantifying how exposed the role is to AI automation, with transition advice. Every analysis is saved and gets a shareable short link.",
+      "links": [
+        {
+          "label": "visit",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": "trip-planner",
+      "category": "services",
+      "status": "live",
+      "date": "2026.05",
+      "title": "TRIP-PLANNER",
+      "kind": "Website",
+      "desc": "An AI-generated multi-country trip planner covering 80+ countries — day-clustered maps with passport-stamp-style markers, a currency converter, practical travel info, local edit mode, and shareable short links.",
+      "links": [
+        {
+          "label": "visit",
+          "url": "#"
+        }
+      ]
+    }
+  ]
+}
