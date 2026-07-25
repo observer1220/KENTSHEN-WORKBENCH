@@ -1,6 +1,6 @@
 import { useLocale } from "../i18n/LocaleContext";
 
-export default function Footer() {
+export default function Footer({ onContactClick }) {
   const { data } = useLocale();
   const links = data.ui.about.links || {};
 
@@ -9,12 +9,16 @@ export default function Footer() {
       <div className="about-title">{data.ui.about.label}</div>
       {data.ui.about.body && <p>{data.ui.about.body}</p>}
       <div className="foot-links">
-        {Object.keys(links).map((key) =>
-          links[key] ? (
-            <a key={key} href="#">
-              {links[key]}
-            </a>
-          ) : null
+        {links.contact && (
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              onContactClick();
+            }}
+          >
+            {links.contact}
+          </a>
         )}
       </div>
       <div className="colophon">{data.ui.colophon}</div>

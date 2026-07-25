@@ -14,27 +14,29 @@
     "linkLabels": {
       "install": "安裝（載入未封裝）→",
       "store": "前往 Chrome 線上應用程式店 →",
-      "source": "原始碼",
       "visit": "前往 →",
       "download": "下載 →"
     },
     "about": {
       "label": "關於",
       "links": {
-        "github": "GitHub",
         "contact": "聯絡"
       }
     },
     "colophon": "字體使用 Big Shoulders Display 與 IBM Plex Mono。純手工打造，沒有框架。",
-    "boot": {
-      "lines": [
-        "啟動 KENT_SHEN_WORKBENCH.SYS...",
-        "掛載模組 [extensions] [apps] [games] [services] [skills]... OK",
-        "建立安全連線... OK",
-        "載入使用者設定檔... OK",
-        "歡迎回來，operator."
-      ],
-      "skip": "跳過 [ENTER]"
+    "contact": {
+      "heading": "聯絡",
+      "categoryLabel": "類型",
+      "categoryOptions": {
+        "feedback": "產品回饋",
+        "custom": "客製化服務"
+      },
+      "nameLabel": "姓名",
+      "phoneLabel": "手機",
+      "emailLabel": "Email",
+      "descLabel": "說明",
+      "submitLabel": "送出",
+      "backLabel": "← 返回"
     }
   },
   "products": [
@@ -50,10 +52,6 @@
         {
           "label": "store",
           "url": "https://chromewebstore.google.com/detail/%E6%97%A5%E6%96%87%E6%AD%8C%E8%A9%9E%E5%90%8C%E6%AD%A5%E7%BF%BB%E8%AD%AF-lyric-sync/fgfbcpaaihodhcbncfgdnadiddmpdeem"
-        },
-        {
-          "label": "source",
-          "url": "#"
         }
       ]
     },
@@ -88,21 +86,6 @@
       ]
     },
     {
-      "id": "job-analyzer",
-      "category": "services",
-      "status": "live",
-      "date": "2026.07",
-      "title": "JOB-ANALYZER",
-      "kind": "網站",
-      "desc": "貼上一段職缺描述（或 CakeResume 連結自動抓取），**六維雷達圖**量化這份工作被 AI 取代的風險，並給出轉型建議。每筆分析都存進資料庫，產生可分享的短連結。",
-      "links": [
-        {
-          "label": "visit",
-          "url": "#"
-        }
-      ]
-    },
-    {
       "id": "trip-planner",
       "category": "services",
       "status": "live",
@@ -113,7 +96,7 @@
       "links": [
         {
           "label": "visit",
-          "url": "#"
+          "url": "https://trip-planner-aez.pages.dev/"
         }
       ]
     }

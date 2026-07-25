@@ -14,27 +14,29 @@
     "linkLabels": {
       "install": "Install unpacked →",
       "store": "Chrome Web Store →",
-      "source": "Source",
       "visit": "Visit →",
       "download": "Download →"
     },
     "about": {
       "label": "About",
       "links": {
-        "github": "GitHub",
         "contact": "Contact"
       }
     },
     "colophon": "Set in Big Shoulders Display & IBM Plex Mono. Built by hand, no framework.",
-    "boot": {
-      "lines": [
-        "booting KENT_SHEN_WORKBENCH.SYS...",
-        "mounting modules [extensions] [apps] [games] [services] [skills]... OK",
-        "establishing secure connection... OK",
-        "loading user profile... OK",
-        "welcome back, operator."
-      ],
-      "skip": "SKIP [ENTER]"
+    "contact": {
+      "heading": "Contact",
+      "categoryLabel": "Type",
+      "categoryOptions": {
+        "feedback": "Product Feedback",
+        "custom": "Custom Development"
+      },
+      "nameLabel": "Name",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "descLabel": "Description",
+      "submitLabel": "Send",
+      "backLabel": "← Back"
     }
   },
   "products": [
@@ -50,10 +52,6 @@
         {
           "label": "store",
           "url": "https://chromewebstore.google.com/detail/%E6%97%A5%E6%96%87%E6%AD%8C%E8%A9%9E%E5%90%8C%E6%AD%A5%E7%BF%BB%E8%AD%AF-lyric-sync/fgfbcpaaihodhcbncfgdnadiddmpdeem"
-        },
-        {
-          "label": "source",
-          "url": "#"
         }
       ]
     },
@@ -88,21 +86,6 @@
       ]
     },
     {
-      "id": "job-analyzer",
-      "category": "services",
-      "status": "live",
-      "date": "2026.07",
-      "title": "JOB-ANALYZER",
-      "kind": "Website",
-      "desc": "Paste in a job description — or a CakeResume link for automatic scraping — and get a **six-dimension radar chart** quantifying how exposed the role is to AI automation, with transition advice. Every analysis is saved and gets a shareable short link.",
-      "links": [
-        {
-          "label": "visit",
-          "url": "#"
-        }
-      ]
-    },
-    {
       "id": "trip-planner",
       "category": "services",
       "status": "live",
@@ -113,7 +96,7 @@
       "links": [
         {
           "label": "visit",
-          "url": "#"
+          "url": "https://trip-planner-aez.pages.dev/"
         }
       ]
     }

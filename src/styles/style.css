@@ -549,7 +549,7 @@ footer .colophon{
   *{ transition:none !important; animation:none !important; }
 }
 
-/* ---------- glitch hover + blinking cursor ---------- */
+/* ---------- glitch hover ---------- */
 @keyframes glitch-flicker{
   0%,100%{ text-shadow:2px 0 var(--gold), -2px 0 #ff2e63; }
   50%{ text-shadow:-2px 0 var(--gold), 2px 0 #ff2e63; }
@@ -558,49 +558,57 @@ footer .colophon{
   animation:glitch-flicker 0.5s steps(2, end) infinite;
 }
 
-@keyframes cursor-blink{
-  0%, 49%{ opacity:1; }
-  50%, 100%{ opacity:0; }
-}
-.cursor-blink{
-  display:inline-block;
-  margin-left:2px;
-  color:var(--pine);
-  text-shadow:var(--glow);
-  animation:cursor-blink 1s steps(1) infinite;
-}
-
-/* ---------- boot sequence overlay ---------- */
-.boot-overlay{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:var(--paper);
-  color:var(--pine);
-  display:flex;
-  align-items:center;
-  padding:9vw;
+/* ---------- contact form ---------- */
+.contact-page .backlink{
+  background:none;
+  border:none;
   cursor:pointer;
-  opacity:1;
-  transition:opacity .32s ease;
+  padding:0;
 }
-.boot-overlay.is-fading{ opacity:0; }
-.boot-terminal{
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
-  font-size:clamp(13px, 2vw, 18px);
-  line-height:2;
-  text-shadow:0 0 8px color-mix(in srgb, var(--pine) 50%, transparent);
-  max-width:760px;
+.contact-form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px 24px;
+  max-width:640px;
+  margin-top:10px;
 }
-.boot-line{ white-space:pre-wrap; word-break:break-word; }
-.boot-line.is-done{ opacity:0.65; }
-.boot-skip{
-  position:absolute;
-  bottom:28px;
-  right:32px;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
   font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
-  font-size:11px;
-  letter-spacing:0.08em;
+  font-size:12px;
   color:var(--mute);
   text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.field-wide{ grid-column:1 / -1; }
+.field input,
+.field select,
+.field textarea{
+  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
+  font-size:14px;
+  color:var(--ink);
+  background:var(--paper-dim);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:9px 11px;
+  text-transform:none;
+  letter-spacing:normal;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  outline:none;
+  border-color:var(--pine);
+  box-shadow:0 0 8px color-mix(in srgb, var(--pine) 40%, transparent);
+}
+.field textarea{ resize:vertical; }
+.contact-submit{
+  grid-column:1 / -1;
+  justify-self:start;
+  cursor:pointer;
+}
+@media (max-width:560px){
+  .contact-form{ grid-template-columns:1fr; }
 }
