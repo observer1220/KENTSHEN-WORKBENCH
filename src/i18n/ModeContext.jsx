@@ -2,9 +2,9 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const MODE_KEY = "kentshen_mode";
 
-// The site has one dark, terminal-styled look. This toggle switches
-// between two accent palettes ("green" phosphor vs "amber" CRT) rather
-// than light/dark — there is no light theme in the hacker redesign.
+// The site has one warm-paper, Japanese-retro look. This toggle switches
+// between two accent palettes — "green" (indigo-forward) and "amber"
+// (vermillion-forward) — rather than light/dark; both are the same paper tone.
 function detectDefaultMode() {
   try {
     const saved = window.localStorage.getItem(MODE_KEY);

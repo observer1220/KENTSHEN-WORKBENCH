@@ -10,7 +10,7 @@ export default function Header() {
     <header>
       <div className="headerbar">
         <div>
-          <a className="brandlink glitch-hover" href="#top" aria-label="Kent Shen" data-text="KENT SHEN">
+          <a className="brandlink" href="#top" aria-label="Kent Shen">
             <h1 className="brand" id="brandTitle">
               KENT
               <br />
@@ -29,7 +29,7 @@ export default function Header() {
             className="modebtn"
             type="button"
             onClick={toggleMode}
-            aria-label={mode === "amber" ? "Switch to green phosphor" : "Switch to amber phosphor"}
+            aria-label={mode === "amber" ? "Switch to indigo palette" : "Switch to vermillion palette"}
           >
             <TerminalIcon />
           </button>

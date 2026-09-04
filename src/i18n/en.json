@@ -23,7 +23,7 @@
         "contact": "Contact"
       }
     },
-    "colophon": "Set in Big Shoulders Display & IBM Plex Mono. Built by hand, no framework.",
+    "colophon": "Set in Shippori Mincho & Zen Kaku Gothic New. Built by hand, no framework.",
     "contact": {
       "heading": "Contact",
       "categoryLabel": "Type",
@@ -41,28 +41,13 @@
   },
   "products": [
     {
-      "id": "lyrics-overlay",
-      "category": "extensions",
-      "status": "live",
-      "date": "2026.06",
-      "title": "JPOP-LYRIC-SYNC-CHROME-EXTENSION",
-      "kind": "Chrome Extension",
-      "desc": "My first extension to ship. A floating, draggable lyrics panel for Japanese songs on YouTube — furigana readings, karaoke-style word highlighting with adjustable lead time, and synced Traditional Chinese translation. Built with **kuromoji** tokenization. Live on the Chrome Web Store.",
-      "links": [
-        {
-          "label": "store",
-          "url": "https://chromewebstore.google.com/detail/%E6%97%A5%E6%96%87%E6%AD%8C%E8%A9%9E%E5%90%8C%E6%AD%A5%E7%BF%BB%E8%AD%AF-lyric-sync/fgfbcpaaihodhcbncfgdnadiddmpdeem"
-        }
-      ]
-    },
-    {
-      "id": "peaks-map-site",
+      "id": "taiwan-baiyue",
       "category": "services",
       "status": "live",
       "date": "2026.04",
-      "title": "PEAKS-OF-TAIWAN-WEB",
+      "title": "TAIWAN-BAIYUE",
       "kind": "Website",
-      "desc": "The standalone version of the project above — a full **Leaflet** map site with satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
+      "desc": "A full **Leaflet** map tool for Taiwan's 100 Peaks — satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
       "links": [
         {
           "label": "visit",
@@ -86,17 +71,32 @@
       ]
     },
     {
-      "id": "trip-planner",
+      "id": "undercurrent",
       "category": "services",
       "status": "live",
-      "date": "2026.05",
-      "title": "TRIP-PLANNER",
+      "date": "2026.08",
+      "title": "UNDERCURRENT",
       "kind": "Website",
-      "desc": "An AI-generated multi-country trip planner covering 80+ countries — day-clustered maps with passport-stamp-style markers, a currency converter, practical travel info, local edit mode, and shareable short links.",
+      "desc": "A corporate relationship-graph **due-diligence** tool — search by name, company, or business ID to trace directors, managers, and cross-company shareholding chains. Pulls from Taiwan's official **GCIS** registry, foundation/association filings, news, court judgment lookups, and environmental penalty records, with PNG/CSV export.",
       "links": [
         {
           "label": "visit",
-          "url": "https://trip-planner-aez.pages.dev/"
+          "url": "https://undercurrent.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "category": "services",
+      "status": "live",
+      "date": "2026.09",
+      "title": "ELSEWHERE",
+      "kind": "Website",
+      "desc": "An AI trip planner covering 171 countries — pick a destination on a spinning 3D globe. Japan/Korea/Vietnam/Thailand use a **database-backed precision mode** (real attractions, restaurants, and hotels, not AI-invented ones); other countries draw on the AI's own knowledge. Drag-to-reorder itinerary editing, Google Maps route overlays, and shareable short links.",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://elsewhere.observer1220.workers.dev/"
         }
       ]
     }

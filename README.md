@@ -1,11 +1,12 @@
 # Kent Shen — Workbench (React + Vite)
 
-A personal catalog site for Chrome extensions and web services. Built with
-React + Vite. Traditional Chinese is the default/primary language; the
-English locale and the language toggle stay fully wired up for later.
-Visual theme is a dark, geek/hacker terminal look — green-phosphor by
-default, with an amber-CRT palette toggle, scanline overlay, and glow
-accents.
+A personal catalog site for web services. Built with React + Vite.
+Traditional Chinese is the default/primary language; the English locale
+and the language toggle stay fully wired up for later. Visual theme is a
+low-key, Japanese-retro look — warm washi-paper background, sumi ink text,
+Shippori Mincho headings — with an indigo/vermillion accent-palette
+toggle. No glow, scanlines, or neon; the toggle just swaps which accent
+color (ai-zome indigo vs. bengara vermillion) leads.
 
 **Single flat page, no categories/routing** — the catalog is only 4 items,
 so everything renders as one list with no nav tabs, no pagination, and no

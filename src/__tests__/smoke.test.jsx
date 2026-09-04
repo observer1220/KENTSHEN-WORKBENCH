@@ -19,21 +19,18 @@ describe("single-page layout (default locale: zh)", () => {
     expect(rail.querySelectorAll(".entry").length).toBe(4);
     expect(document.querySelector(".pagination-controls")).toBeNull();
 
-    expect(screen.getByText(/JPOP-LYRIC-SYNC-CHROME-EXTENSION/)).toBeTruthy();
-    expect(screen.getByText(/PEAKS-OF-TAIWAN-WEB/)).toBeTruthy();
+    expect(screen.getByText(/TAIWAN-BAIYUE/)).toBeTruthy();
     expect(screen.getByText(/TW-STOCK-REPORT/)).toBeTruthy();
-    expect(screen.getByText(/TRIP-PLANNER/)).toBeTruthy();
+    expect(screen.getByText(/UNDERCURRENT/)).toBeTruthy();
+    expect(screen.getByText(/ELSEWHERE/)).toBeTruthy();
 
     // removed/hidden items should be gone
     expect(screen.queryByText(/JOB-ANALYZER/)).toBeNull();
-    expect(screen.queryByText(/PEAKS-OF-TAIWAN-CHROME-EXTENSION/)).toBeNull();
+    expect(screen.queryByText(/JPOP-LYRIC-SYNC-CHROME-EXTENSION/)).toBeNull();
+    expect(screen.queryByText(/PEAKS-OF-TAIWAN-WEB/)).toBeNull();
+    expect(screen.queryByText(/TRIP-PLANNER/)).toBeNull();
     expect(screen.queryByText(/這禮拜去哪玩/)).toBeNull();
     expect(screen.queryByText("尚未命名")).toBeNull();
-  });
-
-  it("has no source-code link on the lyrics extension card", () => {
-    render(<App />);
-    expect(screen.queryByText(/原始碼|Source/)).toBeNull();
   });
 });
 

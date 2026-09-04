@@ -1,22 +1,22 @@
 :root{
-  --paper: #060a08;
-  --paper-dim: #0d1712;
-  --ink: #cdf7d6;
-  --pine: #00ff6a;
-  --gold: #00e5ff;
-  --mute: #4f6b58;
-  --line: #1c2b22;
-  --glow: 0 0 6px currentColor;
+  --paper: #f1e9d8;
+  --paper-dim: #e6dac0;
+  --ink: #2c2620;
+  --pine: #2e4a63;
+  --gold: #9c4030;
+  --mute: #8c7c60;
+  --line: #d9cba8;
+  --font-display: 'Shippori Mincho', 'Noto Serif TC', serif;
+  --font-ui: 'Zen Kaku Gothic New', 'Noto Sans TC', sans-serif;
 }
 html[data-mode="amber"]{
-  --paper: #0a0806;
-  --paper-dim: #17110a;
-  --ink: #ffe9b3;
-  --pine: #ffb000;
-  --gold: #ff7a3c;
-  --mute: #7a6a4a;
-  --line: #2b2416;
-  --glow: 0 0 6px currentColor;
+  --paper: #ead9be;
+  --paper-dim: #dec89f;
+  --ink: #2a2016;
+  --pine: #8a3a2b;
+  --gold: #3f5c4c;
+  --mute: #8a7150;
+  --line: #cbae7c;
 }
 
 *{box-sizing:border-box;}
@@ -25,72 +25,15 @@ body{
   margin:0;
   background:var(--paper);
   color:var(--ink);
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
+  font-family:var(--font-ui);
   -webkit-font-smoothing:antialiased;
   transition:background .3s ease, color .3s ease;
   position:relative;
 }
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:5;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.15) 0px,
-    rgba(0,0,0,0.15) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode:multiply;
-  opacity:0.35;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:4;
-  background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 130%);
-}
 body.lang-zh .brand,
 body.lang-zh .hero p,
 body.lang-zh .entry h3{
-  font-family:'Noto Sans TC', 'Orbitron', sans-serif;
-}
-/* CJK fallback for mono-spaced labels (IBM Plex Mono has no Han glyphs) */
-body.lang-zh .tagline,
-body.lang-zh .sectionlabel,
-body.lang-zh .entry-meta,
-body.lang-zh .status-tag,
-body.lang-zh .entry .kind,
-body.lang-zh .entry .links a,
-body.lang-zh .langbtn,
-body.lang-zh .aboutlink,
-body.lang-zh nav.catnav a,
-body.lang-zh footer .about-title,
-body.lang-zh footer .foot-links a,
-body.lang-zh footer .colophon,
-body.lang-zh .triggers-label,
-body.lang-zh .trigger-chip,
-body.lang-zh .pagebtn,
-body.lang-zh .pageindicator{
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
-}
-/* Noto Sans TC renders visually larger than Big Shoulders Display at the
-   same font-size, so scale zh headings down to keep proportions consistent
-   when switching languages. */
-body.lang-zh .hero p{
-  font-size:clamp(19px, 2.6vw, 26px);
-  font-weight:700;
-  line-height:1.55;
-}
-body.lang-zh .entry h3{
-  font-size:19px;
-  font-weight:700;
-  letter-spacing:0;
-  text-transform:none;
+  font-family:'Noto Serif TC', 'Shippori Mincho', serif;
 }
 a{color:inherit;}
 body[hidden]{ display:none; }
@@ -113,22 +56,21 @@ header{
   gap:20px;
 }
 .brand{
-  font-family:'Orbitron', sans-serif;
-  font-weight:900;
-  font-size:clamp(52px, 9vw, 108px);
-  line-height:0.85;
-  letter-spacing:0.01em;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:clamp(48px, 8vw, 96px);
+  line-height:0.95;
+  letter-spacing:0.02em;
   text-transform:uppercase;
   margin:0;
-  text-shadow:0 0 14px color-mix(in srgb, var(--pine) 55%, transparent);
 }
-.brand span{ color:var(--pine); text-shadow:var(--glow); }
+.brand span{ color:var(--pine); }
 .tagline{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:13px;
   color:var(--mute);
   margin:14px 0 0;
-  letter-spacing:0.01em;
+  letter-spacing:0.02em;
 }
 .headertools{
   display:flex;
@@ -138,13 +80,13 @@ header{
   flex-shrink:0;
 }
 .aboutlink, .langbtn{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   border:1px solid var(--line);
   background:transparent;
   color:var(--mute);
   padding:7px 12px;
-  border-radius:3px;
+  border-radius:2px;
   cursor:pointer;
   text-decoration:none;
   white-space:nowrap;
@@ -152,7 +94,6 @@ header{
 .aboutlink:hover, .langbtn:hover{
   border-color:var(--pine);
   color:var(--pine);
-  box-shadow:0 0 8px color-mix(in srgb, var(--pine) 45%, transparent);
 }
 .langbtn{ font-weight:500; }
 
@@ -173,7 +114,6 @@ header{
 .modebtn:hover{
   border-color:var(--gold);
   color:var(--gold);
-  box-shadow:0 0 8px color-mix(in srgb, var(--gold) 45%, transparent);
 }
 .modebtn svg{
   width:16px;
@@ -186,10 +126,9 @@ nav.catnav{
   flex-wrap:wrap;
   gap:22px;
   padding:16px 0 0;
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
-  letter-spacing:0.03em;
-  text-transform:uppercase;
+  letter-spacing:0.02em;
 }
 nav.catnav a{
   text-decoration:none;
@@ -211,10 +150,10 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   border-bottom:1px solid var(--line);
 }
 .hero p{
-  font-family:'Orbitron', sans-serif;
+  font-family:var(--font-display);
   font-weight:600;
-  font-size:clamp(24px, 3.4vw, 34px);
-  line-height:1.25;
+  font-size:clamp(22px, 3.2vw, 32px);
+  line-height:1.4;
   max-width:640px;
   margin:0;
   text-transform:none;
@@ -224,13 +163,13 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   color:var(--pine);
 }
 .hero .sub{
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
+  font-family:var(--font-ui);
   font-weight:400;
   font-size:15px;
   color:var(--mute);
   margin-top:14px;
   max-width:520px;
-  line-height:1.6;
+  line-height:1.7;
 }
 
 /* ---------- explore grid (home page) ---------- */
@@ -253,41 +192,36 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   text-decoration:none;
   color:var(--ink);
 }
-.explore-card:hover{ background:var(--paper-dim); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--pine) 50%, transparent); }
+.explore-card:hover{ background:var(--paper-dim); }
 .explore-card:hover .explore-arrow{ color:var(--gold); transform:translateX(3px); }
 .explore-label{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:11px;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
+  letter-spacing:0.04em;
   color:var(--mute);
 }
 .explore-count{
-  font-family:'Orbitron', sans-serif;
+  font-family:var(--font-display);
   font-weight:700;
-  font-size:26px;
-  text-transform:uppercase;
+  font-size:24px;
 }
 .explore-arrow{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:14px;
   color:var(--pine);
   transition:transform .15s ease, color .15s ease;
 }
-body.lang-zh .explore-label{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace; }
-body.lang-zh .explore-count{ font-family:'Noto Sans TC', sans-serif; font-size:20px; }
 
 /* ---------- back link (category pages) ---------- */
 .backlink{
   display:inline-block;
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   color:var(--mute);
   text-decoration:none;
   margin:32px 0 0;
 }
 .backlink:hover{ color:var(--pine); }
-body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace; }
 
 /* ---------- build log ---------- */
 .log{
@@ -295,19 +229,18 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   padding:52px 0 60px;
 }
 .sectionlabel{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
+  letter-spacing:0.06em;
   color:var(--mute);
   margin-bottom:10px;
 }
 .sectionnote{
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
+  font-family:var(--font-ui);
   font-size:13px;
   color:var(--mute);
   max-width:560px;
-  line-height:1.6;
+  line-height:1.7;
   margin:0 0 30px;
 }
 .rail{
@@ -346,48 +279,45 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   display:flex;
   align-items:center;
   gap:12px;
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   color:var(--mute);
   margin-bottom:8px;
   flex-wrap:wrap;
 }
 .status-tag{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:11px;
-  letter-spacing:0.05em;
+  letter-spacing:0.03em;
   padding:2px 8px;
   border-radius:2px;
   border:1px solid var(--line);
-  text-transform:uppercase;
 }
-.entry[data-status="live"] .status-tag{ color:var(--pine); border-color:var(--pine); text-shadow:var(--glow); box-shadow:0 0 6px color-mix(in srgb, var(--pine) 40%, transparent); }
+.entry[data-status="live"] .status-tag{ color:var(--pine); border-color:var(--pine); }
 .entry[data-status="beta"] .status-tag{ color:var(--gold); border-color:var(--gold); }
 .entry[data-status="planned"] .status-tag{ color:var(--mute); }
 
 .entry h3{
-  font-family:'Orbitron', sans-serif;
+  font-family:var(--font-display);
   font-weight:700;
-  font-size:26px;
-  text-transform:uppercase;
+  font-size:24px;
   letter-spacing:0.01em;
   margin:0 0 8px;
 }
 .entry .kind{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:11px;
   color:var(--mute);
-  text-transform:uppercase;
-  letter-spacing:0.04em;
+  letter-spacing:0.02em;
   margin-left:2px;
 }
 .entry p.desc{
   margin:0 0 12px;
   font-size:15px;
-  line-height:1.65;
+  line-height:1.75;
   color:var(--ink);
   max-width:560px;
-  opacity:0.88;
+  opacity:0.9;
 }
 .entry p.desc strong{ color:var(--pine); font-weight:600; }
 .entry p.desc a{ color:var(--pine); border-bottom:1px solid var(--line); text-decoration:none; }
@@ -397,7 +327,7 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   flex-wrap:wrap;
 }
 .entry .links a{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   text-decoration:none;
   color:var(--pine);
@@ -412,7 +342,7 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   width:100%;
   max-width:420px;
   aspect-ratio:16/10;
-  border-radius:4px;
+  border-radius:3px;
   border:1px solid var(--line);
   overflow:hidden;
   margin-bottom:14px;
@@ -431,10 +361,10 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   border-style:dashed;
 }
 .skill-shot.is-placeholder span{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:11px;
   color:var(--mute);
-  letter-spacing:0.03em;
+  letter-spacing:0.02em;
 }
 .triggers{
   display:flex;
@@ -444,20 +374,19 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   margin-bottom:14px;
 }
 .triggers-label{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:11px;
   color:var(--mute);
-  text-transform:uppercase;
-  letter-spacing:0.04em;
+  letter-spacing:0.02em;
   margin-right:2px;
 }
 .trigger-chip{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   color:var(--pine);
   background:var(--paper-dim);
   border:1px solid var(--line);
-  border-radius:3px;
+  border-radius:2px;
   padding:3px 9px;
 }
 
@@ -471,13 +400,13 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   padding-top:20px;
 }
 .pagebtn{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   border:1px solid var(--line);
   background:transparent;
   color:var(--mute);
   padding:7px 12px;
-  border-radius:3px;
+  border-radius:2px;
   cursor:pointer;
 }
 .pagebtn:hover:not(:disabled){
@@ -489,7 +418,7 @@ body.lang-zh .backlink{ font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
   cursor:default;
 }
 .pageindicator{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   color:var(--mute);
 }
@@ -500,24 +429,23 @@ footer{
   padding:40px 0 48px;
 }
 footer .about-title{
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
+  letter-spacing:0.06em;
   color:var(--mute);
   margin-bottom:14px;
 }
 footer p{
   max-width:560px;
   font-size:15px;
-  line-height:1.7;
+  line-height:1.8;
   margin:0 0 20px;
 }
 footer .foot-links{
   display:flex;
   gap:18px;
   flex-wrap:wrap;
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
 }
 footer .foot-links a{
@@ -529,7 +457,7 @@ footer .foot-links a{
 footer .foot-links a:hover{ border-color:var(--pine); }
 footer .colophon{
   margin-top:34px;
-  font-family:'JetBrains Mono', monospace;
+  font-family:var(--font-ui);
   font-size:11px;
   color:var(--mute);
 }
@@ -541,21 +469,12 @@ footer .colophon{
 }
 
 :focus-visible{
-  outline:2px solid var(--gold);
+  outline:2px solid var(--pine);
   outline-offset:2px;
 }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   *{ transition:none !important; animation:none !important; }
-}
-
-/* ---------- glitch hover ---------- */
-@keyframes glitch-flicker{
-  0%,100%{ text-shadow:2px 0 var(--gold), -2px 0 #ff2e63; }
-  50%{ text-shadow:-2px 0 var(--gold), 2px 0 #ff2e63; }
-}
-.glitch-hover:hover .brand{
-  animation:glitch-flicker 0.5s steps(2, end) infinite;
 }
 
 /* ---------- contact form ---------- */
@@ -576,24 +495,22 @@ footer .colophon{
   display:flex;
   flex-direction:column;
   gap:8px;
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
+  font-family:var(--font-ui);
   font-size:12px;
   color:var(--mute);
-  text-transform:uppercase;
-  letter-spacing:0.04em;
+  letter-spacing:0.02em;
 }
 .field-wide{ grid-column:1 / -1; }
 .field input,
 .field select,
 .field textarea{
-  font-family:'JetBrains Mono', 'Noto Sans TC', monospace;
+  font-family:var(--font-ui);
   font-size:14px;
   color:var(--ink);
   background:var(--paper-dim);
   border:1px solid var(--line);
-  border-radius:3px;
+  border-radius:2px;
   padding:9px 11px;
-  text-transform:none;
   letter-spacing:normal;
 }
 .field input:focus,
@@ -601,7 +518,6 @@ footer .colophon{
 .field textarea:focus{
   outline:none;
   border-color:var(--pine);
-  box-shadow:0 0 8px color-mix(in srgb, var(--pine) 40%, transparent);
 }
 .field textarea{ resize:vertical; }
 .contact-submit{

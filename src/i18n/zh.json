@@ -23,7 +23,7 @@
         "contact": "聯絡"
       }
     },
-    "colophon": "字體使用 Big Shoulders Display 與 IBM Plex Mono。純手工打造，沒有框架。",
+    "colophon": "字體使用 Shippori Mincho 與 Zen Kaku Gothic New。純手工打造，沒有框架。",
     "contact": {
       "heading": "聯絡",
       "categoryLabel": "類型",
@@ -41,28 +41,13 @@
   },
   "products": [
     {
-      "id": "lyrics-overlay",
-      "category": "extensions",
-      "status": "live",
-      "date": "2026.06",
-      "title": "JPOP-LYRIC-SYNC-CHROME-EXTENSION",
-      "kind": "Chrome 外掛",
-      "desc": "我上架的第一個外掛。在 YouTube 日文歌曲上顯示可拖曳的浮動歌詞面板——附注音假名、可調整提前量的卡拉OK式逐字 highlight，同步繁體中文翻譯。底層用 **kuromoji** 做斷詞。已上架 Chrome 線上應用程式店。",
-      "links": [
-        {
-          "label": "store",
-          "url": "https://chromewebstore.google.com/detail/%E6%97%A5%E6%96%87%E6%AD%8C%E8%A9%9E%E5%90%8C%E6%AD%A5%E7%BF%BB%E8%AD%AF-lyric-sync/fgfbcpaaihodhcbncfgdnadiddmpdeem"
-        }
-      ]
-    },
-    {
-      "id": "peaks-map-site",
+      "id": "taiwan-baiyue",
       "category": "services",
       "status": "live",
       "date": "2026.04",
-      "title": "PEAKS-OF-TAIWAN-WEB",
+      "title": "TAIWAN-BAIYUE",
       "kind": "網站",
-      "desc": "上面那個專案的獨立網站版——完整的 **Leaflet** 地圖：衛星影像、篩選面板、登山勾選清單、擲骰子隨機選山，還有透過 Cloudflare Worker 抓的中央氣象署即時天氣。",
+      "desc": "完整的 **Leaflet** 地圖版台灣百岳查詢工具——衛星影像、篩選面板、登山勾選清單、擲骰子隨機選山，還有透過 Cloudflare Worker 抓的中央氣象署即時天氣。",
       "links": [
         {
           "label": "visit",
@@ -86,17 +71,32 @@
       ]
     },
     {
-      "id": "trip-planner",
+      "id": "undercurrent",
       "category": "services",
       "status": "live",
-      "date": "2026.05",
-      "title": "TRIP-PLANNER",
+      "date": "2026.08",
+      "title": "UNDERCURRENT",
       "kind": "網站",
-      "desc": "AI 產生的多國行程規劃工具，涵蓋 80 幾個國家——依天數分群的地圖（護照戳章風格圖標）、匯率換算、實用資訊、可在本機編輯行程，並產生短網址分享。",
+      "desc": "公司與法人關係圖譜的**盡職調查**工具——輸入姓名／公司名／統編查詢董監事、經理人與跨公司持股鏈，整合經濟部 **GCIS** 官方資料、法人登記公告、新聞、司法院裁判書與環境部裁罰紀錄，支援匯出 PNG／CSV。",
       "links": [
         {
           "label": "visit",
-          "url": "https://trip-planner-aez.pages.dev/"
+          "url": "https://undercurrent.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "category": "services",
+      "status": "live",
+      "date": "2026.09",
+      "title": "ELSEWHERE",
+      "kind": "網站",
+      "desc": "AI 行程規劃工具，涵蓋 171 個國家——3D 旋轉地球選目的地，日韓越泰走**資料庫精準模式**（景點、餐廳、住宿不再是 AI 編造），其餘國家走 AI 知識模式，支援拖曳編輯行程表、Google Maps 動線導航與短網址分享。",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://elsewhere.observer1220.workers.dev/"
         }
       ]
     }
