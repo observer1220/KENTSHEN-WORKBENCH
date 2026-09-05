@@ -4,9 +4,14 @@ A personal catalog site for web services. Built with React + Vite.
 Traditional Chinese is the default/primary language; the English locale
 and the language toggle stay fully wired up for later. Visual theme is a
 low-key, Japanese-retro look — warm washi-paper background, sumi ink text,
-Shippori Mincho headings — with an indigo/vermillion accent-palette
+Noto Serif TC headings — with an indigo/vermillion accent-palette
 toggle. No glow, scanlines, or neon; the toggle just swaps which accent
 color (ai-zome indigo vs. bengara vermillion) leads.
+
+Product catalog renders as a horizontal, carousel-style gallery
+(`Gallery.jsx`) — one scroll-snapped card per product with a screenshot,
+description, and (when available) the Threads post it's backed by,
+embedded live via Meta's official oEmbed script.
 
 **Single flat page, no categories/routing** — the catalog is only 4 items,
 so everything renders as one list with no nav tabs, no pagination, and no

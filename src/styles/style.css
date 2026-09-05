@@ -6,7 +6,7 @@
   --gold: #9c4030;
   --mute: #8c7c60;
   --line: #d9cba8;
-  --font-display: 'Shippori Mincho', 'Noto Serif TC', serif;
+  --font-display: 'Noto Serif TC', serif;
   --font-ui: 'Zen Kaku Gothic New', 'Noto Sans TC', sans-serif;
 }
 html[data-mode="amber"]{
@@ -33,7 +33,7 @@ body{
 body.lang-zh .brand,
 body.lang-zh .hero p,
 body.lang-zh .entry h3{
-  font-family:'Noto Serif TC', 'Shippori Mincho', serif;
+  font-family:'Noto Serif TC', serif;
 }
 a{color:inherit;}
 body[hidden]{ display:none; }
@@ -336,6 +336,145 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
 }
 .entry .links a:hover{ color:var(--gold); border-color:var(--gold); }
 .entry.is-planned p.desc, .entry.is-planned .entry-meta{ color:var(--mute); opacity:0.7; }
+
+/* ---------- gallery: horizontal scroll-snap cards ---------- */
+.gallery{
+  position:relative;
+}
+.gallery-track{
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x proximity;
+  scroll-behavior:smooth;
+  padding:4px 4px 18px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:var(--line) transparent;
+}
+.gallery-nav{
+  position:absolute;
+  top:110px;
+  z-index:2;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--mute);
+  font-size:20px;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.gallery-nav:hover{ border-color:var(--pine); color:var(--pine); }
+.gallery-nav-prev{ left:-6px; }
+.gallery-nav-next{ right:-6px; }
+@media (max-width:720px){
+  .gallery-nav{ display:none; }
+}
+.gallery-card{
+  flex:0 0 auto;
+  width:min(86vw, 360px);
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  background:var(--paper-dim);
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+}
+.gallery-card-media{
+  aspect-ratio:16/10;
+  background:var(--paper);
+  overflow:hidden;
+}
+.gallery-card-media img{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.gallery-card-media[data-fit="cover"] img{ object-fit:cover; }
+.gallery-card-media[data-fit="contain"] img{ object-fit:contain; padding:18px; box-sizing:border-box; }
+.gallery-card[data-id="elsewhere"] .gallery-card-media{
+  background:linear-gradient(135deg, #2f4a46, #7a2f28);
+}
+.gallery-card-body{
+  padding:18px 20px 20px;
+}
+.gallery-card-body h3{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:0.01em;
+  margin:0 0 8px;
+}
+.gallery-card-body .kind{
+  font-family:var(--font-ui);
+  font-size:11px;
+  color:var(--mute);
+  letter-spacing:0.02em;
+  margin-left:2px;
+}
+.gallery-card-body p.desc{
+  margin:0 0 12px;
+  font-size:14px;
+  line-height:1.7;
+  color:var(--ink);
+  opacity:0.9;
+}
+.gallery-card-body p.desc strong{ color:var(--pine); font-weight:600; }
+.gallery-card-body p.desc a{ color:var(--pine); border-bottom:1px solid var(--line); text-decoration:none; }
+.gallery-card-body .links{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.gallery-card-body .links a{
+  font-family:var(--font-ui);
+  font-size:12px;
+  text-decoration:none;
+  color:var(--pine);
+  border-bottom:1px solid var(--pine);
+  padding-bottom:1px;
+}
+.gallery-card-body .links a:hover{ color:var(--gold); border-color:var(--gold); }
+.gallery-feedback{
+  padding:16px 20px 20px;
+  border-top:1px solid var(--line);
+  margin-top:auto;
+}
+.gallery-feedback .sectionlabel{
+  font-size:11px;
+  margin-bottom:12px;
+}
+.threads-embed-frame{
+  height:1000px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  border-radius:8px;
+}
+.threads-embed{
+  margin:0;
+  border:none;
+  padding:0;
+}
+.threads-embed a{
+  display:inline-block;
+  font-family:var(--font-ui);
+  font-size:13px;
+  color:var(--pine);
+  text-decoration:none;
+  border-bottom:1px solid var(--pine);
+  padding-bottom:1px;
+}
+@media (max-width:560px){
+  .gallery-card{ width:86vw; }
+}
 
 /* ---------- claude skills: screenshot + trigger chips ---------- */
 .skill-shot{

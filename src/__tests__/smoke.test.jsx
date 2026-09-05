@@ -15,8 +15,8 @@ describe("single-page layout (default locale: zh)", () => {
     expect(document.querySelector(".hero")).toBeNull();
     expect(document.querySelector(".boot-overlay")).toBeNull();
 
-    const rail = document.querySelector(".rail");
-    expect(rail.querySelectorAll(".entry").length).toBe(4);
+    const gallery = document.querySelector(".gallery");
+    expect(gallery.querySelectorAll(".gallery-card").length).toBe(4);
     expect(document.querySelector(".pagination-controls")).toBeNull();
 
     expect(screen.getByText(/TAIWAN-BAIYUE/)).toBeTruthy();
@@ -52,7 +52,7 @@ describe("contact flow", () => {
     fireEvent.click(contactLink);
 
     expect(document.querySelector(".contact-form")).not.toBeNull();
-    expect(document.querySelector(".rail")).toBeNull();
+    expect(document.querySelector(".gallery")).toBeNull();
 
     const select = document.querySelector(".contact-form select");
     expect(select.children.length).toBe(2); // 產品回饋 / 客製化服務
@@ -60,7 +60,7 @@ describe("contact flow", () => {
     const backBtn = screen.getByText("← 返回");
     fireEvent.click(backBtn);
     expect(document.querySelector(".contact-form")).toBeNull();
-    expect(document.querySelector(".rail")).not.toBeNull();
+    expect(document.querySelector(".gallery")).not.toBeNull();
   });
 });
 

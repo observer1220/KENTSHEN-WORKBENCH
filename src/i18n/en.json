@@ -23,7 +23,9 @@
         "contact": "Contact"
       }
     },
-    "colophon": "Set in Shippori Mincho & Zen Kaku Gothic New. Built by hand, no framework.",
+    "colophon": "Set in Noto Serif TC & Zen Kaku Gothic New. Built by hand, no framework.",
+    "feedbackLabel": "User feedback",
+    "threadsFallback": "View on Threads →",
     "contact": {
       "heading": "Contact",
       "categoryLabel": "Type",
@@ -48,6 +50,8 @@
       "title": "TAIWAN-BAIYUE",
       "kind": "Website",
       "desc": "A full **Leaflet** map tool for Taiwan's 100 Peaks — satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
+      "screenshot": "/screenshots/taiwan-baiyue.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/Db0pwl6EzS4",
       "links": [
         {
           "label": "visit",
@@ -63,6 +67,8 @@
       "title": "TW-STOCK-REPORT",
       "kind": "Website",
       "desc": "One-click fetch of the latest **TW and US** stock fundamentals — P/E, P/B, dividend yield, gross margin, pre-tax margin, YoY revenue growth — auto-scored into an investment score and health rating, with CSV/JSON export.",
+      "screenshot": "/screenshots/tw-stock-report.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
         {
           "label": "visit",
@@ -78,6 +84,8 @@
       "title": "UNDERCURRENT",
       "kind": "Website",
       "desc": "A corporate relationship-graph **due-diligence** tool — search by name, company, or business ID to trace directors, managers, and cross-company shareholding chains. Pulls from Taiwan's official **GCIS** registry, foundation/association filings, news, court judgment lookups, and environmental penalty records, with PNG/CSV export.",
+      "screenshot": "/screenshots/undercurrent.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
       "links": [
         {
           "label": "visit",
@@ -93,6 +101,8 @@
       "title": "ELSEWHERE",
       "kind": "Website",
       "desc": "An AI trip planner covering 171 countries — pick a destination on a spinning 3D globe. Japan/Korea/Vietnam/Thailand use a **database-backed precision mode** (real attractions, restaurants, and hotels, not AI-invented ones); other countries draw on the AI's own knowledge. Drag-to-reorder itinerary editing, Google Maps route overlays, and shareable short links.",
+      "screenshot": "/screenshots/elsewhere-globe.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
       "links": [
         {
           "label": "visit",
