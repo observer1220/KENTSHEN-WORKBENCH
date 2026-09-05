@@ -46,7 +46,7 @@ body[hidden]{ display:none; }
 
 /* ---------- header ---------- */
 header{
-  padding:36px 0 18px;
+  padding:28px 0 16px;
   border-bottom:1px solid var(--line);
 }
 .headerbar{
@@ -58,8 +58,8 @@ header{
 .brand{
   font-family:var(--font-display);
   font-weight:800;
-  font-size:clamp(48px, 8vw, 96px);
-  line-height:0.95;
+  font-size:clamp(28px, 4vw, 44px);
+  line-height:1;
   letter-spacing:0.02em;
   text-transform:uppercase;
   margin:0;
@@ -349,14 +349,14 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   overflow-y:hidden;
   scroll-snap-type:x proximity;
   scroll-behavior:smooth;
-  padding:4px 4px 18px;
+  padding:24px 4px 40px;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:thin;
   scrollbar-color:var(--line) transparent;
 }
 .gallery-nav{
   position:absolute;
-  top:110px;
+  top:130px;
   z-index:2;
   width:36px;
   height:36px;
@@ -379,7 +379,7 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
 }
 .gallery-card{
   flex:0 0 auto;
-  width:min(86vw, 360px);
+  width:min(90vw, 420px);
   scroll-snap-align:start;
   display:flex;
   flex-direction:column;
@@ -387,6 +387,12 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   border:1px solid var(--line);
   border-radius:4px;
   overflow:hidden;
+  transition:transform .3s ease, opacity .3s ease, box-shadow .3s ease;
+  transform-origin:center center;
+}
+.gallery-card[data-active="true"]{
+  box-shadow:0 16px 28px -14px color-mix(in srgb, var(--ink) 45%, transparent);
+  border-color:color-mix(in srgb, var(--pine) 40%, var(--line));
 }
 .gallery-card-media{
   aspect-ratio:16/10;
@@ -453,10 +459,21 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   margin-bottom:12px;
 }
 .threads-embed-frame{
-  height:1000px;
+  position:relative;
+  height:320px;
   overflow-y:auto;
   overflow-x:hidden;
   border-radius:8px;
+}
+.threads-embed-frame::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:36px;
+  background:linear-gradient(to bottom, transparent, var(--paper-dim));
+  pointer-events:none;
 }
 .threads-embed{
   margin:0;
@@ -473,7 +490,7 @@ nav.catnav a.active{ color:var(--pine); border-bottom-color:var(--pine); }
   padding-bottom:1px;
 }
 @media (max-width:560px){
-  .gallery-card{ width:86vw; }
+  .gallery-card{ width:88vw; }
 }
 
 /* ---------- claude skills: screenshot + trigger chips ---------- */

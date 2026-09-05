@@ -39,6 +39,49 @@ export default function Gallery() {
     return () => track.removeEventListener("wheel", onWheel);
   }, []);
 
+  // Coverflow-style depth: whichever card sits closest to the track's
+  // center is pushed to full scale/opacity with a lifted shadow; cards
+  // further off-center shrink and fade, so the "current" one visually
+  // pops forward. Only the receding cards ever scale below 1 (the active
+  // one stays at scale(1)) so nothing needs to overflow the scroll clip.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll(".gallery-card"));
+    let raf = null;
+
+    const update = () => {
+      raf = null;
+      const trackRect = track.getBoundingClientRect();
+      const center = trackRect.left + trackRect.width / 2;
+      cards.forEach((card) => {
+        const r = card.getBoundingClientRect();
+        const cardCenter = r.left + r.width / 2;
+        const dist = Math.min(1, Math.abs(cardCenter - center) / (trackRect.width / 2 + r.width / 2));
+        const scale = 1 - dist * 0.1;
+        const translateY = -8 + dist * 20;
+        const opacity = 1 - dist * 0.35;
+        card.style.transform = `translateY(${translateY.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+        card.style.opacity = opacity.toFixed(2);
+        card.dataset.active = dist < 0.3 ? "true" : "false";
+      });
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    track.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <div className="gallery">
       <button type="button" className="gallery-nav gallery-nav-prev" aria-label="Scroll left" onClick={() => scrollByCards(-1)}>
