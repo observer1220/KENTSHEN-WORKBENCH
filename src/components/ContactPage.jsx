@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 
-// TODO(Kent): replace with your real email address before deploying.
 const CONTACT_EMAIL = "observer1220@gmail.com";
 
 export default function ContactPage({ onBack }) {
@@ -36,7 +35,7 @@ export default function ContactPage({ onBack }) {
         {c.backLabel}
       </button>
 
-      <div className="sectionlabel">{c.heading}</div>
+      <h2 className="contact-heading">{c.heading}</h2>
 
       <form className="contact-form" onSubmit={handleSubmit}>
         <label className="field">
@@ -70,7 +69,7 @@ export default function ContactPage({ onBack }) {
           <textarea rows={6} value={desc} onChange={(e) => setDesc(e.target.value)} required />
         </label>
 
-        <button type="submit" className="pagebtn contact-submit">
+        <button type="submit" className="contact-submit">
           {c.submitLabel}
         </button>
       </form>
