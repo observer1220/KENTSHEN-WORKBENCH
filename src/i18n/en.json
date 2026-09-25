@@ -117,6 +117,23 @@
           "url": "https://elsewhere.observer1220.workers.dev/"
         }
       ]
+    },
+    {
+      "id": "veil",
+      "category": "services",
+      "status": "live",
+      "date": "2026.09",
+      "title": "VEIL",
+      "kind": "Website",
+      "tagline": "A sensitive-document redaction tool — masks secrets before you paste to AI.",
+      "desc": "Before you paste logs, config files, or code into an AI chat, **VEIL** auto-masks passwords, private keys, IPs, and personal data — matching runs entirely in your own browser, nothing leaves it, free to use.",
+      "thumbnail": "/thumbnails/veil.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://veil.observer1220.workers.dev/"
+        }
+      ]
     }
   ]
 }

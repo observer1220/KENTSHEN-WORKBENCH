@@ -3,24 +3,27 @@
 A personal catalog site for web services. Built with React + Vite.
 Traditional Chinese is the default/primary language; the English locale
 and the language toggle stay fully wired up for later. Visual theme is a
-low-key, Japanese-retro look — warm washi-paper background, sumi ink text,
-Noto Serif TC headings — with an indigo/vermillion accent-palette
-toggle. No glow, scanlines, or neon; the toggle just swaps which accent
-color (ai-zome indigo vs. bengara vermillion) leads.
+plain white, minimal look — white background, near-black ink text, Noto
+Serif TC headings — with a subtle accent-palette toggle (indigo vs.
+vermillion) that only changes which accent color leads; the background
+stays white in both modes. No glow, scanlines, cream paper, or neon.
 
 Product catalog renders as a flat, Linktree-style list (`LinkList.jsx`) —
-one row per product with a small branded thumbnail, title, and a
-one-line tagline, the whole row linking straight out to the live site.
-An earlier horizontal carousel/gallery version (`Gallery.jsx`,
-`ThreadsEmbed.jsx`) turned out to be too much visual noise for what is,
-at heart, a list of links — the files are kept unused rather than
-deleted in case that richer format is worth revisiting later.
+one row per product with a small thumbnail, title, and a one-line
+tagline, the whole row linking straight out to the live site. An earlier
+horizontal carousel/gallery version (`Gallery.jsx`, `ThreadsEmbed.jsx`)
+turned out to be too much visual noise for what is, at heart, a list of
+links — the files are kept unused rather than deleted in case that
+richer format is worth revisiting later.
 
-Thumbnails (`public/thumbnails/*.png`) are hand-designed branded cards
-(badge + headline + tag pills + a cropped real screenshot), not raw
-app screenshots — see `public/screenshots/*.png` for those.
+Thumbnails (`public/thumbnails/*.png`) are each product's own official
+1200×630 `og-image.png`, copied over from that product's own repo — not
+generated here. When a product's OG image changes, re-copy it manually;
+this repo doesn't fetch it live. `public/screenshots/*.png` holds raw
+app screenshots instead, used only by the retired `Gallery.jsx`.
 
-**Single flat page, no categories/routing** — the catalog is only 4 items,
+**Single flat page, no categories/routing** — the catalog is only a
+handful of items,
 so everything renders as one list with no nav tabs, no pagination, and no
 client-side routing. Each product still carries a `category` field in the
 data (`extensions` / `services`), so re-introducing grouped category pages
@@ -90,7 +93,7 @@ npm test    # runs the smoke test suite (vitest + @testing-library/react)
 ```
 
 Covers: the page renders with no category nav, no explore grid, no
-pagination, and no boot overlay; all 4 current products render as link
+pagination, and no boot overlay; all current products render as link
 rows (and hidden/removed ones don't); the footer has no bio paragraph, no
 podcast link, and no GitHub link; clicking Contact swaps in the form (and
 Back returns to the product list); language toggle flips all copy +

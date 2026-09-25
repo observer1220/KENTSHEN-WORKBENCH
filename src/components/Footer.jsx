@@ -21,7 +21,6 @@ export default function Footer({ onContactClick }) {
           </a>
         )}
       </div>
-      <div className="colophon">{data.ui.colophon}</div>
     </footer>
   );
 }

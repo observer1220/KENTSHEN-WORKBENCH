@@ -117,6 +117,23 @@
           "url": "https://elsewhere.observer1220.workers.dev/"
         }
       ]
+    },
+    {
+      "id": "veil",
+      "category": "services",
+      "status": "live",
+      "date": "2026.09",
+      "title": "VEIL",
+      "kind": "網站",
+      "tagline": "機敏文件去識別化工具，貼給 AI 前自動遮蔽密碼與私鑰。",
+      "desc": "把 log、設定檔、程式碼貼給 AI 前，密碼、私鑰、IP、個資**自動遮蔽**——比對全部在你的瀏覽器裡執行，內容不外傳，免費使用。",
+      "thumbnail": "/thumbnails/veil.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://veil.observer1220.workers.dev/"
+        }
+      ]
     }
   ]
 }

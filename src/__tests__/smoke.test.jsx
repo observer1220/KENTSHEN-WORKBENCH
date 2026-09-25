@@ -5,7 +5,7 @@ import App from "../App";
 afterEach(cleanup);
 
 describe("single-page layout (default locale: zh)", () => {
-  it("renders brand, no category nav, and all 4 products flat with no pagination", () => {
+  it("renders brand, no category nav, and all 5 products flat with no pagination", () => {
     render(<App />);
     expect(screen.getByText("KENT")).toBeTruthy();
     expect(document.documentElement.getAttribute("lang")).toBe("zh-Hant");
@@ -16,13 +16,14 @@ describe("single-page layout (default locale: zh)", () => {
     expect(document.querySelector(".boot-overlay")).toBeNull();
 
     const linklist = document.querySelector(".linklist");
-    expect(linklist.querySelectorAll(".linkrow").length).toBe(4);
+    expect(linklist.querySelectorAll(".linkrow").length).toBe(5);
     expect(document.querySelector(".pagination-controls")).toBeNull();
 
     expect(screen.getByText(/TAIWAN-BAIYUE/)).toBeTruthy();
     expect(screen.getByText(/TW-STOCK-REPORT/)).toBeTruthy();
     expect(screen.getByText(/UNDERCURRENT/)).toBeTruthy();
     expect(screen.getByText(/ELSEWHERE/)).toBeTruthy();
+    expect(screen.getByText(/VEIL/)).toBeTruthy();
 
     // removed/hidden items should be gone
     expect(screen.queryByText(/JOB-ANALYZER/)).toBeNull();
@@ -64,26 +65,13 @@ describe("contact flow", () => {
   });
 });
 
-describe("language toggle", () => {
-  it("defaults to zh and switches to English on toggle", () => {
+describe("header", () => {
+  it("has no about/language/palette buttons (removed for now)", () => {
     render(<App />);
+    expect(document.querySelector(".aboutlink")).toBeNull();
+    expect(document.querySelector(".langbtn")).toBeNull();
+    expect(document.querySelector(".modebtn")).toBeNull();
     expect(document.documentElement.getAttribute("lang")).toBe("zh-Hant");
-    expect(document.body.classList.contains("lang-zh")).toBe(true);
-
-    const langBtn = screen.getByRole("button", { name: /switch language/i });
-    fireEvent.click(langBtn);
-    expect(document.documentElement.getAttribute("lang")).toBe("en");
-    expect(document.body.classList.contains("lang-zh")).toBe(false);
-  });
-});
-
-describe("phosphor palette toggle", () => {
-  it("flips data-mode between green and amber", () => {
-    render(<App />);
-    const before = document.documentElement.getAttribute("data-mode");
-    expect(before).toBe("green");
-    const modeBtn = document.querySelector(".modebtn");
-    fireEvent.click(modeBtn);
-    expect(document.documentElement.getAttribute("data-mode")).toBe("amber");
+    expect(document.documentElement.getAttribute("data-mode")).toBe("green");
   });
 });
