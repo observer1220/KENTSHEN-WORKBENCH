@@ -49,7 +49,9 @@
       "date": "2026.04",
       "title": "TAIWAN-BAIYUE",
       "kind": "網站",
+      "tagline": "Leaflet 地圖版台灣百岳查詢工具，衛星影像、登山清單、即時天氣。",
       "desc": "完整的 **Leaflet** 地圖版台灣百岳查詢工具——衛星影像、篩選面板、登山勾選清單、擲骰子隨機選山，還有透過 Cloudflare Worker 抓的中央氣象署即時天氣。",
+      "thumbnail": "/thumbnails/taiwan-baiyue.png",
       "screenshot": "/screenshots/taiwan-baiyue.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Db0pwl6EzS4",
       "links": [
@@ -66,7 +68,9 @@
       "date": "2026.07",
       "title": "TW-STOCK-REPORT",
       "kind": "網站",
+      "tagline": "一鍵抓取台股與美股基本面數據，自動算出投資評分。",
       "desc": "一鍵抓取**台股與美股**最新基本面數據——本益比、股價淨值比、殖利率、毛利率、稅前淨利率、營收年增率，自動算出投資評分與體質評估，支援 CSV／JSON 匯出。",
+      "thumbnail": "/thumbnails/tw-stock-report.png",
       "screenshot": "/screenshots/tw-stock-report.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
@@ -83,7 +87,9 @@
       "date": "2026.08",
       "title": "UNDERCURRENT",
       "kind": "網站",
+      "tagline": "公司與法人關係圖譜盡職調查工具，整合官方登記資料。",
       "desc": "公司與法人關係圖譜的**盡職調查**工具——輸入姓名／公司名／統編查詢董監事、經理人與跨公司持股鏈，整合經濟部 **GCIS** 官方資料、法人登記公告、新聞、司法院裁判書與環境部裁罰紀錄，支援匯出 PNG／CSV。",
+      "thumbnail": "/thumbnails/undercurrent.png",
       "screenshot": "/screenshots/undercurrent.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
       "links": [
@@ -100,7 +106,9 @@
       "date": "2026.09",
       "title": "ELSEWHERE",
       "kind": "網站",
+      "tagline": "AI 行程規劃工具，涵蓋 171 個國家，3D 地球選目的地。",
       "desc": "AI 行程規劃工具，涵蓋 171 個國家——3D 旋轉地球選目的地，日韓越泰走**資料庫精準模式**（景點、餐廳、住宿不再是 AI 編造），其餘國家走 AI 知識模式，支援拖曳編輯行程表、Google Maps 動線導航與短網址分享。",
+      "thumbnail": "/thumbnails/elsewhere.png",
       "screenshot": "/screenshots/elsewhere-globe.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
       "links": [

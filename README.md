@@ -8,10 +8,17 @@ Noto Serif TC headings — with an indigo/vermillion accent-palette
 toggle. No glow, scanlines, or neon; the toggle just swaps which accent
 color (ai-zome indigo vs. bengara vermillion) leads.
 
-Product catalog renders as a horizontal, carousel-style gallery
-(`Gallery.jsx`) — one scroll-snapped card per product with a screenshot,
-description, and (when available) the Threads post it's backed by,
-embedded live via Meta's official oEmbed script.
+Product catalog renders as a flat, Linktree-style list (`LinkList.jsx`) —
+one row per product with a small branded thumbnail, title, and a
+one-line tagline, the whole row linking straight out to the live site.
+An earlier horizontal carousel/gallery version (`Gallery.jsx`,
+`ThreadsEmbed.jsx`) turned out to be too much visual noise for what is,
+at heart, a list of links — the files are kept unused rather than
+deleted in case that richer format is worth revisiting later.
+
+Thumbnails (`public/thumbnails/*.png`) are hand-designed branded cards
+(badge + headline + tag pills + a cropped real screenshot), not raw
+app screenshots — see `public/screenshots/*.png` for those.
 
 **Single flat page, no categories/routing** — the catalog is only 4 items,
 so everything renders as one list with no nav tabs, no pagination, and no
@@ -83,12 +90,11 @@ npm test    # runs the smoke test suite (vitest + @testing-library/react)
 ```
 
 Covers: the page renders with no category nav, no explore grid, no
-pagination, and no boot overlay; all 4 current products render (and the
-hidden/removed ones don't); the lyrics extension has no source-code link;
-the footer has no bio paragraph, no podcast link, and no GitHub link;
-clicking Contact swaps in the form (and Back returns to the product list);
-language toggle flips all copy + `<html lang>`; the green/amber palette
-toggle flips `data-mode`.
+pagination, and no boot overlay; all 4 current products render as link
+rows (and hidden/removed ones don't); the footer has no bio paragraph, no
+podcast link, and no GitHub link; clicking Contact swaps in the form (and
+Back returns to the product list); language toggle flips all copy +
+`<html lang>`; the green/amber palette toggle flips `data-mode`.
 
 ## Adding a new product
 
@@ -104,7 +110,9 @@ languages will drift out of sync.
   "date": "2026.08",
   "title": "...",
   "kind": "Website",
-  "desc": "supports **bold** and [links](https://example.com)",
+  "tagline": "one plain-text line shown in the link row",
+  "desc": "longer description, supports **bold** and [links](https://example.com) — currently unused by LinkList but kept for a richer future format",
+  "thumbnail": "/thumbnails/new-thing.png",
   "links": [{ "label": "visit", "url": "https://..." }]
 }
 ```
@@ -119,11 +127,17 @@ src/
     ModeContext.jsx           — green/amber phosphor palette state, persistence
   components/
     Header.jsx, Footer.jsx
-    ProductList.jsx           — flat list of every product, no grouping
-    ProductEntry.jsx          — one product card (plus an unused skill-card variant)
+    ProductList.jsx           — thin wrapper around LinkList
+    LinkList.jsx               — the Linktree-style row list (current UI)
+    Gallery.jsx, ThreadsEmbed.jsx, ProductEntry.jsx
+                                — retired carousel/card UI, unused but kept
     ContactPage.jsx            — contact form, swapped in via App's local state
     Pagination.jsx             — unused for now, kept for when the list grows
-    Icons.jsx                 — terminal/CRT toggle icon
-  styles/style.css            — hacker/terminal theme (design tokens, scanlines, glow)
+    Icons.jsx                 — hanko-stamp palette-toggle icon
+  styles/style.css            — washi-paper / sumi-ink Japanese-retro theme
   utils/markdown.jsx          — tiny **bold**/[link]() renderer, no dangerouslySetInnerHTML
+
+public/
+  screenshots/*.png           — raw captures of each live product
+  thumbnails/*.png            — hand-designed branded cards used in LinkList
 ```

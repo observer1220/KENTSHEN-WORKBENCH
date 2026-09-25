@@ -49,7 +49,9 @@
       "date": "2026.04",
       "title": "TAIWAN-BAIYUE",
       "kind": "Website",
+      "tagline": "A Leaflet map for Taiwan's 100 Peaks — satellite imagery, checklists, live weather.",
       "desc": "A full **Leaflet** map tool for Taiwan's 100 Peaks — satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
+      "thumbnail": "/thumbnails/taiwan-baiyue.png",
       "screenshot": "/screenshots/taiwan-baiyue.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Db0pwl6EzS4",
       "links": [
@@ -66,7 +68,9 @@
       "date": "2026.07",
       "title": "TW-STOCK-REPORT",
       "kind": "Website",
+      "tagline": "One-click TW/US stock fundamentals, auto-scored into an investment rating.",
       "desc": "One-click fetch of the latest **TW and US** stock fundamentals — P/E, P/B, dividend yield, gross margin, pre-tax margin, YoY revenue growth — auto-scored into an investment score and health rating, with CSV/JSON export.",
+      "thumbnail": "/thumbnails/tw-stock-report.png",
       "screenshot": "/screenshots/tw-stock-report.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
@@ -83,7 +87,9 @@
       "date": "2026.08",
       "title": "UNDERCURRENT",
       "kind": "Website",
+      "tagline": "A corporate relationship-graph due-diligence tool built on official registries.",
       "desc": "A corporate relationship-graph **due-diligence** tool — search by name, company, or business ID to trace directors, managers, and cross-company shareholding chains. Pulls from Taiwan's official **GCIS** registry, foundation/association filings, news, court judgment lookups, and environmental penalty records, with PNG/CSV export.",
+      "thumbnail": "/thumbnails/undercurrent.png",
       "screenshot": "/screenshots/undercurrent.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
       "links": [
@@ -100,7 +106,9 @@
       "date": "2026.09",
       "title": "ELSEWHERE",
       "kind": "Website",
+      "tagline": "An AI trip planner covering 171 countries, pick a destination on a 3D globe.",
       "desc": "An AI trip planner covering 171 countries — pick a destination on a spinning 3D globe. Japan/Korea/Vietnam/Thailand use a **database-backed precision mode** (real attractions, restaurants, and hotels, not AI-invented ones); other countries draw on the AI's own knowledge. Drag-to-reorder itinerary editing, Google Maps route overlays, and shareable short links.",
+      "thumbnail": "/thumbnails/elsewhere.png",
       "screenshot": "/screenshots/elsewhere-globe.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
       "links": [
