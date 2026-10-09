@@ -81,7 +81,14 @@ npm run preview    # serve the built dist/ locally to sanity-check
 Netlify, GitHub Pages, etc.). No SPA fallback rule is needed since there's
 only one route.
 
-**Cloudflare Pages build settings:**
+**Domain + redirect:** the site is served by a Cloudflare Worker
+(`wrangler.jsonc`, `worker/index.js`) on the custom domain `kentshen.com`.
+The Worker 301-redirects any `*.workers.dev` request (old shared links)
+to `https://kentshen.com` with the same path/query, and otherwise serves
+`dist/` as static assets. Don't disable the `workers.dev` route in the
+Cloudflare dashboard — the redirect depends on it staying reachable.
+
+**Cloudflare Pages build settings (legacy note):**
 
 - Build command: `npm run build`
 - Build output directory: `dist`
