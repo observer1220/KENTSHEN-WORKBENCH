@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
 import { renderMdLite } from "../utils/markdown";
@@ -56,52 +56,10 @@ function WorksIndex() {
   const { data } = useLocale();
   const w = data.ui.works;
   const [query, setQuery] = useState("");
-  const floatRef = useRef(null);
-  const imgRef = useRef(null);
 
   const q = query.trim().toLowerCase();
   const items = q ? data.products.filter((p) => matches(p, q)) : data.products;
 
-  // Cursor-following poster, fine pointers only. Touch devices have no
-  // hover, so each row shows its thumbnail inline instead (see CSS).
-  useEffect(() => {
-    if (!window.matchMedia?.("(hover: hover) and (pointer: fine)").matches) return;
-    const fl = floatRef.current;
-    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
-    const tick = () => {
-      x += (tx - x) * 0.16;
-      y += (ty - y) * 0.16;
-      fl.style.transform = `translate(${x}px, ${y}px) rotate(${((tx - x) * 0.04).toFixed(2)}deg)`;
-      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(tick) : 0;
-    };
-    const move = (e) => {
-      tx = e.clientX + 28;
-      ty = e.clientY - fl.offsetHeight / 2;
-      if (!raf) raf = requestAnimationFrame(tick);
-    };
-    // listen on the whole section so filtering (which remounts the <ul>) can't drop the listeners
-    const list = fl.parentElement;
-    const over = (e) => {
-      const li = e.target.closest("li[data-thumb]");
-      if (!li) {
-        fl.classList.remove("on");
-        return;
-      }
-      imgRef.current.src = li.dataset.thumb;
-      fl.classList.add("on");
-      move(e);
-    };
-    const leave = () => fl.classList.remove("on");
-    list.addEventListener("mouseover", over);
-    list.addEventListener("mousemove", move);
-    list.addEventListener("mouseleave", leave);
-    return () => {
-      list.removeEventListener("mouseover", over);
-      list.removeEventListener("mousemove", move);
-      list.removeEventListener("mouseleave", leave);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <section id="works" aria-labelledby="works-h">
@@ -130,7 +88,7 @@ function WorksIndex() {
           {items.map((p) => {
             const url = p.links && p.links[0] && p.links[0].url;
             return (
-              <li key={p.id} data-thumb={p.thumbnail}>
+              <li key={p.id}>
                 <a className="row" href={url} target="_blank" rel="noopener">
                   <span className="rname">{p.title}</span>
                   <span className="rmeta">
@@ -151,9 +109,6 @@ function WorksIndex() {
         </ul>
       )}
 
-      <div className="float" ref={floatRef} aria-hidden="true">
-        <img ref={imgRef} alt="" />
-      </div>
     </section>
   );
 }

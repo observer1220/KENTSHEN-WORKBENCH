@@ -18,9 +18,7 @@ Routing is a ~60-line History API router in `src/router.jsx`. The Worker is
 configured with `not_found_handling: "single-page-application"` so deep links
 like `/blog/<slug>` load `index.html`.
 
-**Works index:** each row is a work's name in huge type. Fine-pointer devices
-get a cursor-following preview of its thumbnail; touch devices see the
-thumbnail inline under the row.
+**Works index:** each row is a work's name in huge type with its thumbnail always visible beside it (below it on phones); hovering a row sweeps an accent colour across it.
 
 ## Writing blog posts
 
