@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
+import { Link } from "../router";
 
 const CONTACT_EMAIL = "observer1220@gmail.com";
 
-export default function ContactPage({ onBack }) {
+export default function ContactPage() {
   const { data } = useLocale();
   const c = data.ui.contact;
   const categories = Object.keys(c.categoryOptions);
@@ -30,12 +31,12 @@ export default function ContactPage({ onBack }) {
   }
 
   return (
-    <section className="log contact-page">
-      <button type="button" className="backlink" onClick={onBack}>
+    <section className="page contact-page">
+      <Link to="/" className="backlink">
         {c.backLabel}
-      </button>
+      </Link>
 
-      <h2 className="contact-heading">{c.heading}</h2>
+      <h2 className="page-heading">{c.heading}</h2>
 
       <form className="contact-form" onSubmit={handleSubmit}>
         <label className="field">

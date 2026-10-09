@@ -24,6 +24,29 @@
       }
     },
     "colophon": "字體使用 Noto Serif TC 與 Zen Kaku Gothic New。純手工打造，沒有框架。",
+    "nav": { "works": "作品", "blog": "Blog", "contact": "聯絡" },
+    "hero": {
+      "eyebrow": "個人工作台 · 高雄",
+      "title": "做小而**有用**的工具。",
+      "lede": "我一個人設計、寫程式、上線。從登山地圖到公司關係圖，每個作品都解決一件具體的小事。",
+      "facts": { "works": "作品", "deploy": "部署", "time": "高雄時間" }
+    },
+    "home": {
+      "blog": { "title": "Blog", "desc": "做工具時踩過的坑、設計取捨與筆記。" },
+      "contact": { "title": "聯絡", "desc": "產品回饋、合作或客製化，留言或寄信都可以。", "go": "observer1220@gmail.com →" }
+    },
+    "works": {
+      "heading": "作品",
+      "search": "搜尋作品名稱或關鍵字",
+      "empty": "找不到符合的作品。"
+    },
+    "blog": {
+      "heading": "Blog",
+      "soon": "文章準備中，敬請期待。",
+      "back": "← 首頁",
+      "backToList": "← 所有文章",
+      "notFound": "找不到這篇文章"
+    },
     "feedbackLabel": "使用者回饋",
     "threadsFallback": "在 Threads 查看 →",
     "contact": {
@@ -132,6 +155,23 @@
         {
           "label": "visit",
           "url": "https://veil.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "lyric-sync",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.10",
+      "title": "LYRIC-SYNC",
+      "kind": "Chrome 外掛",
+      "tagline": "YouTube 日文歌詞同步翻譯，原文、假名、中文、逐字跑詞。",
+      "desc": "在 YouTube 日文歌曲上顯示可拖曳的浮動歌詞面板——原文、假名、繁體中文翻譯與**逐字跑詞**。免費 Chrome 擴充功能。",
+      "thumbnail": "/thumbnails/lyric-sync.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://lyric-sync.observer1220.workers.dev/"
         }
       ]
     }

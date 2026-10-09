@@ -1,153 +1,125 @@
 # Kent Shen — Workbench (React + Vite)
 
-A personal catalog site for web services. Built with React + Vite.
-Traditional Chinese is the default/primary language; the English locale
-and the language toggle stay fully wired up for later. Visual theme is a
-plain white, minimal look — white background, near-black ink text, Noto
-Serif TC headings — with a subtle accent-palette toggle (indigo vs.
-vermillion) that only changes which accent color leads; the background
-stays white in both modes. No glow, scanlines, cream paper, or neon.
+Personal site at **kentshen.com**: a typographic index of works, a Markdown
+blog, and a contact form. White background, oversized type, one electric-blue
+accent. Traditional Chinese is the default language (`src/i18n/zh.json`; the
+English file is kept in sync but there is no language toggle for now).
 
-Product catalog renders as a flat, Linktree-style list (`LinkList.jsx`) —
-one row per product with a small thumbnail, title, and a one-line
-tagline, the whole row linking straight out to the live site. An earlier
-horizontal carousel/gallery version (`Gallery.jsx`, `ThreadsEmbed.jsx`)
-turned out to be too much visual noise for what is, at heart, a list of
-links — the files are kept unused rather than deleted in case that
-richer format is worth revisiting later.
+## Pages
 
-Thumbnails (`public/thumbnails/*.png`) are each product's own official
-1200×630 `og-image.png`, copied over from that product's own repo — not
-generated here. When a product's OG image changes, re-copy it manually;
-this repo doesn't fetch it live. `public/screenshots/*.png` holds raw
-app screenshots instead, used only by the retired `Gallery.jsx`.
+| Path | What |
+| --- | --- |
+| `/` | Hero + works index (with search) + Blog / Contact blocks |
+| `/blog` | Post list (date, title, summary) |
+| `/blog/<slug>` | A single post |
+| `/contact` | Contact form (builds a `mailto:` link, no backend) |
 
-**Single flat page, no categories/routing** — the catalog is only a
-handful of items,
-so everything renders as one list with no nav tabs, no pagination, and no
-client-side routing. Each product still carries a `category` field in the
-data (`extensions` / `services`), so re-introducing grouped category pages
-later is a rendering change, not a data migration.
+Routing is a ~60-line History API router in `src/router.jsx`. The Worker is
+configured with `not_found_handling: "single-page-application"` so deep links
+like `/blog/<slug>` load `index.html`.
 
-**Contact is a view swap, not a route** — clicking "Contact" in the footer
-swaps the main content for a form (category dropdown, name, phone, email,
-description) via local component state, no URL change. Submitting builds a
-`mailto:` link with the fields filled in — there's no backend.
+**Works index:** each row is a work's name in huge type. Fine-pointer devices
+get a cursor-following preview of its thumbnail; touch devices see the
+thumbnail inline under the row.
 
-## ⚠️ Before deploying: set your real contact email
+## Writing blog posts
 
-`src/components/ContactPage.jsx` has a placeholder at the top:
+Add a Markdown file to `content/blog/`. The filename is the URL slug
+(`my-post.md` → `/blog/my-post`). Posts are bundled at build time — no
+database.
 
-```js
-const CONTACT_EMAIL = "your-email@example.com";
+```md
+---
+title: Post title
+date: 2026-10-09
+tags: Cloudflare, notes
+summary: One line shown in the post list.
+---
+
+Normal Markdown here (headings, lists, code fences, quotes, images, links).
+
+::embed[https://www.threads.com/@user/post/XXXX]
+::embed[https://youtu.be/VIDEO_ID]
+::embed[https://example.com/article | Card title | Card description]
 ```
 
-Replace it with your real address, or the contact form will try to email
-a fake one.
+`::embed[...]` must sit on its own line (not inside a code fence).
 
-## Known TODOs
+- **Threads post** → official Threads embed.
+- **YouTube** (`watch`, `youtu.be`, `shorts`) → privacy-enhanced iframe.
+- **Any other URL** → link card showing the host plus the optional
+  `title | description` you write. There is no server to fetch Open Graph
+  data, so the card does not auto-fill them.
 
-- `JOB-ANALYZER` is hidden for now (removed from `src/i18n/en.json` /
-  `src/i18n/zh.json`) — re-add it as a product entry whenever it's ready to
-  show again.
-- Theme colors live in `src/styles/style.css` under `:root` (green,
-  default) and `html[data-mode="amber"]` (amber alt-palette) — both use the
-  same CSS variable names, so changing a color there updates it everywhere.
-- The Claude Skills catalog (`category: "skills"`) was removed — it's
-  becoming its own standalone product. `ProductEntry.jsx` still has the
-  unused rendering path for skill-style cards (trigger chips, screenshot
-  placeholder, CTA button) in case a similar category comes back.
-- The contact form only sends via `mailto:` (opens the visitor's own email
-  client) — there's no server-side handling. If you want submissions saved
-  somewhere (e.g. a Cloudflare D1 table via a Pages Function) instead of
-  relying on the visitor's mail client, that's a natural next step given
-  your existing Workers setup.
+Post HTML is produced by `marked` and injected with `dangerouslySetInnerHTML`.
+That is acceptable because posts are committed to this repo by the owner; do
+not feed it untrusted content.
 
-## Getting started
+**Known limit:** posts render in the browser, so link previews (Threads,
+Slack, search results) show the generic site title/description, not the post's.
+Pre-rendering each post to static HTML at build time would fix this.
+
+## Develop
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173 — hot reload
+npm run dev       # http://localhost:5173
+npm test          # vitest + @testing-library/react
+npm run build     # static files → dist/
 ```
 
-## Build for deployment
+## Deploy
 
-```bash
-npm run build      # outputs static files to dist/
-npm run preview    # serve the built dist/ locally to sanity-check
-```
+`./deploy.sh main` runs tests + build, commits, and pushes to `main`;
+Cloudflare Workers Builds deploys from GitHub.
 
-`dist/` is a plain static folder — deploy it anywhere (Cloudflare Pages,
-Netlify, GitHub Pages, etc.). No SPA fallback rule is needed since there's
-only one route.
+- `wrangler.jsonc` — Worker `kentshen`, assets from `./dist`, custom domain
+  `kentshen.com`, `workers.dev` kept enabled.
+- `worker/index.js` — 301-redirects any `*.workers.dev` request (old shared
+  links) to `https://kentshen.com` with the same path/query, otherwise serves
+  the static assets. Don't disable the `workers.dev` route in the dashboard:
+  the redirect depends on it staying reachable.
 
-**Domain + redirect:** the site is served by a Cloudflare Worker
-(`wrangler.jsonc`, `worker/index.js`) on the custom domain `kentshen.com`.
-The Worker 301-redirects any `*.workers.dev` request (old shared links)
-to `https://kentshen.com` with the same path/query, and otherwise serves
-`dist/` as static assets. Don't disable the `workers.dev` route in the
-Cloudflare dashboard — the redirect depends on it staying reachable.
+## Adding a work
 
-**Cloudflare Pages build settings (legacy note):**
-
-- Build command: `npm run build`
-- Build output directory: `dist`
-
-## Tests
-
-```bash
-npm test    # runs the smoke test suite (vitest + @testing-library/react)
-```
-
-Covers: the page renders with no category nav, no explore grid, no
-pagination, and no boot overlay; all current products render as link
-rows (and hidden/removed ones don't); the footer has no bio paragraph, no
-podcast link, and no GitHub link; clicking Contact swaps in the form (and
-Back returns to the product list); language toggle flips all copy +
-`<html lang>`; the green/amber palette toggle flips `data-mode`.
-
-## Adding a new product
-
-Everything lives in `src/i18n/en.json` and `src/i18n/zh.json` — both files
-must be edited together, using the same `id` per entry, or the two
-languages will drift out of sync.
+Edit `src/i18n/zh.json` and `src/i18n/en.json` together, same `id` in both.
+Copy the product's own `og-image.png` (1200×630) into `public/thumbnails/`.
 
 ```json
 {
   "id": "new-thing",
   "category": "services",
   "status": "live",
-  "date": "2026.08",
-  "title": "...",
-  "kind": "Website",
-  "tagline": "one plain-text line shown in the link row",
-  "desc": "longer description, supports **bold** and [links](https://example.com) — currently unused by LinkList but kept for a richer future format",
+  "date": "2026.10",
+  "title": "NEW-THING",
+  "kind": "網站",
+  "tagline": "One plain-text line shown in the index.",
+  "desc": "Longer description (searchable; supports **bold**).",
   "thumbnail": "/thumbnails/new-thing.png",
   "links": [{ "label": "visit", "url": "https://..." }]
 }
 ```
 
-## Project structure
+`tagline`, `desc`, `title` and `kind` are all searched by the search box.
+Thumbnails are static copies; re-copy them if a product's OG image changes.
+(`screenshot` / `feedback` fields in the JSON are leftovers from a retired
+gallery layout and are unused.)
+
+## Contact email
+
+`src/components/ContactPage.jsx` sets `CONTACT_EMAIL`; the form opens the
+visitor's mail client with the fields filled in.
+
+## Structure
 
 ```
+content/blog/*.md          blog posts
 src/
-  i18n/
-    en.json, zh.json        — all UI copy + product data, per language
-    LocaleContext.jsx        — language state, detection, persistence
-    ModeContext.jsx           — green/amber phosphor palette state, persistence
-  components/
-    Header.jsx, Footer.jsx
-    ProductList.jsx           — thin wrapper around LinkList
-    LinkList.jsx               — the Linktree-style row list (current UI)
-    Gallery.jsx, ThreadsEmbed.jsx, ProductEntry.jsx
-                                — retired carousel/card UI, unused but kept
-    ContactPage.jsx            — contact form, swapped in via App's local state
-    Pagination.jsx             — unused for now, kept for when the list grows
-    Icons.jsx                 — hanko-stamp palette-toggle icon
-  styles/style.css            — washi-paper / sumi-ink Japanese-retro theme
-  utils/markdown.jsx          — tiny **bold**/[link]() renderer, no dangerouslySetInnerHTML
-
-public/
-  screenshots/*.png           — raw captures of each live product
-  thumbnails/*.png            — hand-designed branded cards used in LinkList
+  blog/posts.js            loads posts, frontmatter, ::embed parsing
+  components/              Header, Home, BlogPage, Embed, ThreadsEmbed, ContactPage
+  i18n/                    zh.json, en.json, LocaleContext
+  router.jsx               History API router + <Link>
+  styles/style.css         all styles (tokens at the top)
+worker/index.js            workers.dev → kentshen.com redirect + asset serving
+public/thumbnails/         each work's og-image
 ```

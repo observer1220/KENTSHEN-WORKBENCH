@@ -1,27 +1,31 @@
-import { useState } from "react";
 import { LocaleProvider } from "./i18n/LocaleContext";
-import { ModeProvider } from "./i18n/ModeContext";
+import { RouterProvider, useRouter } from "./router";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ProductList from "./components/ProductList";
+import Home from "./components/Home";
+import { BlogList, BlogPost } from "./components/BlogPage";
 import ContactPage from "./components/ContactPage";
 
-export default function App() {
-  const [view, setView] = useState("home"); // "home" | "contact"
+function Page() {
+  const { path } = useRouter();
+  if (path === "/blog") return <BlogList />;
+  if (path.startsWith("/blog/")) return <BlogPost slug={decodeURIComponent(path.slice(6))} />;
+  if (path === "/contact") return <ContactPage />;
+  return <Home />;
+}
 
+export default function App() {
   return (
     <LocaleProvider>
-      <ModeProvider>
+      <RouterProvider>
         <div className="wrap" id="top">
           <Header />
-          {view === "contact" ? (
-            <ContactPage onBack={() => setView("home")} />
-          ) : (
-            <ProductList />
-          )}
-          <Footer onContactClick={() => setView("contact")} />
+          <Page />
+          <footer className="foot mono">
+            <span>© 2026 Kent Shen</span>
+            <span>kentshen.com</span>
+          </footer>
         </div>
-      </ModeProvider>
+      </RouterProvider>
     </LocaleProvider>
   );
 }

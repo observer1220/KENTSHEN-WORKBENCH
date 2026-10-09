@@ -24,6 +24,29 @@
       }
     },
     "colophon": "Set in Noto Serif TC & Zen Kaku Gothic New. Built by hand, no framework.",
+    "nav": { "works": "Works", "blog": "Blog", "contact": "Contact" },
+    "hero": {
+      "eyebrow": "Personal workbench · Kaohsiung",
+      "title": "Small tools that are **useful**.",
+      "lede": "I design, build, and ship them alone. From a hiking map to a company-relationship graph, each one solves one concrete problem.",
+      "facts": { "works": "Works", "deploy": "Hosting", "time": "Kaohsiung time" }
+    },
+    "home": {
+      "blog": { "title": "Blog", "desc": "Lessons, design trade-offs, and notes from building." },
+      "contact": { "title": "Contact", "desc": "Feedback, collaboration, or custom work.", "go": "observer1220@gmail.com →" }
+    },
+    "works": {
+      "heading": "Works",
+      "search": "Search by name or keyword",
+      "empty": "No matching works."
+    },
+    "blog": {
+      "heading": "Blog",
+      "soon": "Articles are on the way.",
+      "back": "← Home",
+      "backToList": "← All posts",
+      "notFound": "Post not found"
+    },
     "feedbackLabel": "User feedback",
     "threadsFallback": "View on Threads →",
     "contact": {
@@ -132,6 +155,23 @@
         {
           "label": "visit",
           "url": "https://veil.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "lyric-sync",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.10",
+      "title": "LYRIC-SYNC",
+      "kind": "Chrome Extension",
+      "tagline": "Synced Japanese lyrics on YouTube — kana, Chinese translation, word-by-word highlight.",
+      "desc": "A floating, draggable lyrics panel for Japanese songs on YouTube — original text, kana readings, Traditional Chinese translation, and **word-by-word highlighting**. Free Chrome extension.",
+      "thumbnail": "/thumbnails/lyric-sync.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://lyric-sync.observer1220.workers.dev/"
         }
       ]
     }
