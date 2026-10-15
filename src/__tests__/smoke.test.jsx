@@ -12,16 +12,20 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe("home", () => {
-  it("shows the one-line brand, hero, Kaohsiung label, nav, and all 6 works", () => {
+  it("shows the one-line brand, hero, Kaohsiung label, nav, and all 7 works", () => {
     render(<App />);
     expect(document.querySelector(".brand").textContent).toBe("KENT SHEN");
     expect(document.documentElement.getAttribute("lang")).toBe("zh-Hant");
     expect(screen.getByText("高雄時間")).toBeTruthy();
     expect(screen.queryByText(/台北/)).toBeNull();
+    expect(screen.queryByText(/個人工作台/)).toBeNull();
+    expect(screen.queryByText(/做小而/)).toBeNull();
+    expect(screen.queryByText(/我一個人設計/)).toBeNull();
+    expect(document.querySelector(".work-img img").getAttribute("alt")).toContain("TAIWAN-BAIYUE");
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();
-    expect(document.querySelectorAll(".index .row").length).toBe(6);
+    expect(document.querySelectorAll(".workgrid .work").length).toBe(7);
 
-    for (const name of ["TAIWAN-BAIYUE", "TW-STOCK-REPORT", "UNDERCURRENT", "ELSEWHERE", "VEIL", "LYRIC-SYNC"]) {
+    for (const name of ["TAIWAN-BAIYUE", "TW-STOCK-REPORT", "UNDERCURRENT", "ELSEWHERE", "VEIL", "LYRIC-SYNC", "LATENT"]) {
       expect(screen.getByText(name)).toBeTruthy();
     }
     expect(screen.queryByText(/JOB-ANALYZER/)).toBeNull();
@@ -33,9 +37,9 @@ describe("home", () => {
     render(<App />);
     const search = screen.getByRole("searchbox");
     fireEvent.change(search, { target: { value: "stock" } });
-    expect(document.querySelectorAll(".index .row").length).toBe(1);
+    expect(document.querySelectorAll(".workgrid .work").length).toBe(1);
     fireEvent.change(search, { target: { value: "zzzz-no-such-work" } });
-    expect(document.querySelectorAll(".index .row").length).toBe(0);
+    expect(document.querySelectorAll(".workgrid .work").length).toBe(0);
     expect(screen.getByText("找不到符合的作品。")).toBeTruthy();
   });
 });
@@ -104,11 +108,11 @@ describe("contact flow", () => {
     fireEvent.click(document.querySelector('.nav a[href="/contact"]'));
     expect(window.location.pathname).toBe("/contact");
     expect(document.querySelector(".contact-form")).not.toBeNull();
-    expect(document.querySelector(".index")).toBeNull();
+    expect(document.querySelector(".workgrid")).toBeNull();
     expect(document.querySelector(".contact-form select").children.length).toBe(2);
 
     fireEvent.click(screen.getByText("← 返回"));
     expect(document.querySelector(".contact-form")).toBeNull();
-    expect(document.querySelector(".index")).not.toBeNull();
+    expect(document.querySelector(".workgrid")).not.toBeNull();
   });
 });

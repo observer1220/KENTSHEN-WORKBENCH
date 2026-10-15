@@ -26,9 +26,7 @@
     "colophon": "字體使用 Noto Serif TC 與 Zen Kaku Gothic New。純手工打造，沒有框架。",
     "nav": { "works": "作品", "blog": "Blog", "contact": "聯絡" },
     "hero": {
-      "eyebrow": "個人工作台 · 高雄",
-      "title": "做小而**有用**的工具。",
-      "lede": "我一個人設計、寫程式、上線。從登山地圖到公司關係圖，每個作品都解決一件具體的小事。",
+      "heading": "Kent Shen 作品",
       "facts": { "works": "作品", "deploy": "部署", "time": "高雄時間" }
     },
     "home": {
@@ -172,6 +170,23 @@
         {
           "label": "visit",
           "url": "https://lyric-sync.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "latent",
+      "category": "services",
+      "status": "live",
+      "date": "2026.10",
+      "title": "LATENT",
+      "kind": "網站",
+      "tagline": "照片與影片整理工具，依時間與地點自動分組，檔案不上傳。",
+      "desc": "依拍攝時間與地點自動分組照片與影片，自動辨識截圖、自拍與模糊照片，可批次貼標籤、HEIC 轉 JPG、匯出時分資料夾。所有處理都在你的瀏覽器內完成。",
+      "thumbnail": "/thumbnails/latent.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://latent.kentshen.com/"
         }
       ]
     }

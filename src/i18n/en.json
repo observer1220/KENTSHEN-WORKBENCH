@@ -26,9 +26,7 @@
     "colophon": "Set in Noto Serif TC & Zen Kaku Gothic New. Built by hand, no framework.",
     "nav": { "works": "Works", "blog": "Blog", "contact": "Contact" },
     "hero": {
-      "eyebrow": "Personal workbench · Kaohsiung",
-      "title": "Small tools that are **useful**.",
-      "lede": "I design, build, and ship them alone. From a hiking map to a company-relationship graph, each one solves one concrete problem.",
+      "heading": "Kent Shen works",
       "facts": { "works": "Works", "deploy": "Hosting", "time": "Kaohsiung time" }
     },
     "home": {
@@ -172,6 +170,23 @@
         {
           "label": "visit",
           "url": "https://lyric-sync.observer1220.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "latent",
+      "category": "services",
+      "status": "live",
+      "date": "2026.10",
+      "title": "LATENT",
+      "kind": "Website",
+      "tagline": "Photo and video organizer — groups by time and place, files never leave your browser.",
+      "desc": "Automatically groups photos and videos by time and place, detects screenshots, selfies and blurry shots, batch tagging, HEIC to JPG, and exports into folders. Everything is processed in your own browser.",
+      "thumbnail": "/thumbnails/latent.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://latent.kentshen.com/"
         }
       ]
     }

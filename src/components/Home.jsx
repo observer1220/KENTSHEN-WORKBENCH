@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
-import { renderMdLite } from "../utils/markdown";
 
 // Kaohsiung and Taipei share a time zone, so Intl only knows "Asia/Taipei".
 const clockFmt = new Intl.DateTimeFormat("en-GB", {
@@ -27,9 +26,7 @@ function Hero() {
 
   return (
     <section className="hero">
-      <span className="mono">{h.eyebrow}</span>
-      <h1>{renderMdLite(h.title)}</h1>
-      <p className="lede">{h.lede}</p>
+      <h1 className="sr-only">{h.heading}</h1>
       <div className="facts">
         <div>
           <span className="mono">{h.facts.works}</span>
@@ -84,24 +81,26 @@ function WorksIndex() {
       {items.length === 0 ? (
         <p className="muted works-empty">{w.empty}</p>
       ) : (
-        <ul className="index">
+        <ul className="workgrid">
           {items.map((p) => {
             const url = p.links && p.links[0] && p.links[0].url;
             return (
               <li key={p.id}>
-                <a className="row" href={url} target="_blank" rel="noopener">
-                  <span className="rname">{p.title}</span>
-                  <span className="rmeta">
-                    <span className="rkind">
-                      {p.kind} · {p.date.slice(0, 4)}
-                    </span>
-                    <span className="rtag">{p.tagline}</span>
-                  </span>
+                <a className="work" href={url} target="_blank" rel="noopener">
                   {p.thumbnail && (
-                    <span className="inline-thumb">
-                      <img src={p.thumbnail} alt="" loading="lazy" />
+                    <span className="work-img">
+                      <img src={p.thumbnail} alt={`${p.title}: ${p.tagline}`} loading="lazy" />
                     </span>
                   )}
+                  <span className="work-body">
+                    <span className="work-head">
+                      <span className="work-title">{p.title}</span>
+                      <span className="work-kind">
+                        {p.kind} · {p.date.slice(0, 4)}
+                      </span>
+                    </span>
+                    <span className="work-tag">{p.tagline}</span>
+                  </span>
                 </a>
               </li>
             );
