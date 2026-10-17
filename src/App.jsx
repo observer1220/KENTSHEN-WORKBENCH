@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import { BlogList, BlogPost } from "./components/BlogPage";
 import ContactPage from "./components/ContactPage";
+import InstallHint from "./components/InstallHint";
 
 function Page() {
   const { path } = useRouter();
@@ -22,6 +23,7 @@ export default function App() {
           <Page />
           <footer className="foot mono">
             <span>© 2026 Kent Shen</span>
+            <InstallHint />
             <span>kentshen.com</span>
           </footer>
         </div>

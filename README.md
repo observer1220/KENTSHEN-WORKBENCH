@@ -1,15 +1,12 @@
 # Kent Shen — Workbench (React + Vite)
 
-Personal site at **kentshen.com**: a typographic index of works, a Markdown
-blog, and a contact form. White background, oversized type, one electric-blue
-accent. Traditional Chinese is the default language (`src/i18n/zh.json`; the
-English file is kept in sync but there is no language toggle for now).
+Personal site at **kentshen.com**: numbered plates of works, a Markdown blog, and a contact form. Styled in the International Typographic (Swiss) style: 12-column grid, flush-left Archivo + Noto Sans TC (weights 400 vs 900 only), IBM Plex Mono for labels, square corners, hairline and 2px rules, one red (--red). Traditional Chinese is the default language (src/i18n/zh.json; the English file is kept in sync but there is no language toggle for now).
 
 ## Pages
 
 | Path | What |
 | --- | --- |
-| `/` | Hero + works index (with search) + Blog / Contact blocks |
+| `/` | Wordmark + facts, works as numbered plates (with search), latest post + contact blocks |
 | `/blog` | Post list (date, title, summary) |
 | `/blog/<slug>` | A single post |
 | `/contact` | Contact form (builds a `mailto:` link, no backend) |
@@ -18,7 +15,23 @@ Routing is a ~60-line History API router in `src/router.jsx`. The Worker is
 configured with `not_found_handling: "single-page-application"` so deep links
 like `/blog/<slug>` load `index.html`.
 
-**Works index:** each row is a work's name in huge type with its thumbnail always visible beside it (below it on phones); hovering a row sweeps an accent colour across it.
+**Works:** each work is a large numbered plate (its og-image at ~620px wide so the text in it stays readable, full width on phones) with a 2px rule, number, name, type/year and one-line tagline underneath. Image `alt` text carries the name and tagline.
+
+## Title, icons, link preview, install
+
+- Browser title: **Kent Shen's Workspace** (`meta.title` in both i18n files and
+  `index.html`; a post's tab title is `<post> — Kent Shen's Workspace`).
+- `public/favicon.svg` (K + red square), `favicon-32.png`, `apple-touch-icon.png`,
+  `icon-192/512.png`, `icon-maskable-512.png`, and `manifest.webmanifest`
+  (standalone, white). The social/link-preview image is `public/og-image.png`
+  (1200×630), referenced by the `og:*` / `twitter:*` tags in `index.html`.
+- These PNGs were drawn once with canvas (K from the SVG, wordmark in Archivo 900)
+  and committed; to change them, re-render and replace the files.
+- The footer shows **加入主畫面 +** only when it can help: Chrome/Edge/Android
+  when the browser offers installation (opens the native prompt), and iOS
+  (shows "Share → Add to Home Screen"). It is hidden once installed.
+- All routes share one `index.html`, so link previews of individual posts show
+  the site-level title/image (see the known limit below).
 
 ## Writing blog posts
 

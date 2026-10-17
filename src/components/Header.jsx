@@ -6,9 +6,9 @@ export default function Header() {
   const nav = data.ui.nav;
 
   return (
-    <header className="bar">
-      <Link className="brand" to="/" aria-label="Kent Shen">
-        KENT <span>SHEN</span>
+    <header className="bar g">
+      <Link className="brand" to="/">
+        Kent Shen
       </Link>
       <nav className="nav">
         <Link to="/#works">{nav.works}</Link>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
+import { posts, formatDate } from "../blog/posts";
 
 // Kaohsiung and Taipei share a time zone, so Intl only knows "Asia/Taipei".
 const clockFmt = new Intl.DateTimeFormat("en-GB", {
@@ -17,30 +18,36 @@ function Clock() {
     const id = setInterval(() => setNow(clockFmt.format(new Date())), 1000);
     return () => clearInterval(id);
   }, []);
-  return <strong className="clock">{now}</strong>;
+  return <strong>{now}</strong>;
 }
+
+const pad = (n) => String(n).padStart(2, "0");
 
 function Hero() {
   const { data } = useLocale();
-  const h = data.ui.hero;
+  const f = data.ui.hero.facts;
 
   return (
-    <section className="hero">
-      <h1 className="sr-only">{h.heading}</h1>
-      <div className="facts">
-        <div>
-          <span className="mono">{h.facts.works}</span>
-          <strong>{data.products.length}</strong>
-        </div>
-        <div>
-          <span className="mono">{h.facts.deploy}</span>
+    <section className="hero g">
+      <h1 className="wordmark">
+        Kent
+        <br />
+        Shen<b>.</b>
+      </h1>
+      <ul className="facts mono">
+        <li>
+          <span className="mute">{f.works}</span>
+          <strong>{pad(data.products.length)}</strong>
+        </li>
+        <li>
+          <span className="mute">{f.deploy}</span>
           <strong>Cloudflare Workers</strong>
-        </div>
-        <div>
-          <span className="mono">{h.facts.time}</span>
+        </li>
+        <li>
+          <span className="mute">{f.time}</span>
           <Clock />
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
   );
 }
@@ -55,18 +62,16 @@ function WorksIndex() {
   const [query, setQuery] = useState("");
 
   const q = query.trim().toLowerCase();
-  const items = q ? data.products.filter((p) => matches(p, q)) : data.products;
-
+  const items = data.products.map((p, i) => ({ p, no: i + 1 })).filter(({ p }) => !q || matches(p, q));
 
   return (
     <section id="works" aria-labelledby="works-h">
-      <div className="worksbar">
+      <div className="sechead g">
         <h2 id="works-h">{w.heading}</h2>
+        <span className="count mono mute">
+          {pad(items.length)} / {pad(data.products.length)}
+        </span>
         <label className="search">
-          <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
           <input
             type="search"
             value={query}
@@ -78,60 +83,79 @@ function WorksIndex() {
         </label>
       </div>
 
-      {items.length === 0 ? (
-        <p className="muted works-empty">{w.empty}</p>
-      ) : (
-        <ul className="workgrid">
-          {items.map((p) => {
+      <div className="plates g">
+        {items.length === 0 ? (
+          <p className="empty">{w.empty}</p>
+        ) : (
+          items.map(({ p, no }) => {
             const url = p.links && p.links[0] && p.links[0].url;
             return (
-              <li key={p.id}>
-                <a className="work" href={url} target="_blank" rel="noopener">
-                  {p.thumbnail && (
-                    <span className="work-img">
-                      <img src={p.thumbnail} alt={`${p.title}: ${p.tagline}`} loading="lazy" />
-                    </span>
-                  )}
-                  <span className="work-body">
-                    <span className="work-head">
-                      <span className="work-title">{p.title}</span>
-                      <span className="work-kind">
-                        {p.kind} · {p.date.slice(0, 4)}
-                      </span>
-                    </span>
-                    <span className="work-tag">{p.tagline}</span>
+              <a key={p.id} className="plate" href={url} target="_blank" rel="noopener">
+                {p.thumbnail && (
+                  <figure>
+                    <img src={p.thumbnail} alt={`${p.title}: ${p.tagline}`} loading="lazy" />
+                  </figure>
+                )}
+                <div className="cap">
+                  <span className="no mono">{pad(no)}</span>
+                  <h3>{p.title}</h3>
+                  <span className="meta mono">
+                    {p.kind} · {p.date.slice(0, 4)}
                   </span>
-                </a>
-              </li>
+                </div>
+                <p>{p.tagline}</p>
+              </a>
             );
-          })}
-        </ul>
-      )}
-
+          })
+        )}
+      </div>
     </section>
   );
 }
 
-function BigLinks() {
+function BlogAndContact() {
   const { data } = useLocale();
   const h = data.ui.home;
+  const latest = posts[0];
 
   return (
-    <section className="duo">
-      <Link className="big" to="/blog">
-        <div>
-          <h3>{h.blog.title}</h3>
-          <p>{h.blog.desc}</p>
-        </div>
-        <span className="go">kentshen.com/blog →</span>
-      </Link>
-      <Link className="big" to="/contact">
-        <div>
-          <h3>{h.contact.title}</h3>
-          <p>{h.contact.desc}</p>
-        </div>
-        <span className="go">{h.contact.go}</span>
-      </Link>
+    <section className="pair g">
+      <div className="col">
+        <span className="mono mute">{h.blog.title}</span>
+        <h2>
+          <Link to="/blog">{h.blog.title}</Link>
+        </h2>
+        {latest ? (
+          <Link className="entry" to={`/blog/${latest.slug}`}>
+            <time className="mono mute" dateTime={latest.date}>
+              {formatDate(latest.date)}
+            </time>
+            <div>
+              <h3>{latest.title}</h3>
+              {latest.summary && <p>{latest.summary}</p>}
+            </div>
+          </Link>
+        ) : (
+          <p className="lead">{h.blog.desc}</p>
+        )}
+        <Link className="more" to="/blog">
+          {h.blog.all}
+        </Link>
+      </div>
+
+      <div className="col">
+        <span className="mono mute">{h.contact.title}</span>
+        <h2>
+          <Link to="/contact">{h.contact.title}</Link>
+        </h2>
+        <p className="lead">{h.contact.desc}</p>
+        <a className="mail" href={`mailto:${h.contact.email}`}>
+          {h.contact.email}
+        </a>
+        <Link className="more" to="/contact">
+          {h.contact.form}
+        </Link>
+      </div>
     </section>
   );
 }
@@ -141,7 +165,7 @@ export default function Home() {
     <>
       <Hero />
       <WorksIndex />
-      <BigLinks />
+      <BlogAndContact />
     </>
   );
 }

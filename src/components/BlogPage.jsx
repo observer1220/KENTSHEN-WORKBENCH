@@ -49,7 +49,7 @@ export function BlogPost({ slug }) {
   useEffect(() => {
     if (!post) return;
     const prev = document.title;
-    document.title = `${post.title} — Kent Shen`;
+    document.title = `${post.title} — Kent Shen's Workspace`;
     return () => {
       document.title = prev;
     };
