@@ -30,7 +30,7 @@ function Hero() {
   return (
     <section className="hero g">
       <h1 className="wordmark">
-        Kent
+        Kent{" "}
         <br />
         Shen<b>.</b>
       </h1>
